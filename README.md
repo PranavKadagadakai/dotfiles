@@ -9,13 +9,13 @@ Ensure you have the following installed on your system
 ### Git
 
 ```
-pacman -S git
+sudo apt install git
 ```
 
 ### Stow
 
 ```
-pacman -S stow
+sudo apt install stow
 ```
 
 ## Installation
@@ -23,12 +23,13 @@ pacman -S stow
 First, check out the dotfiles repo in your $HOME directory using git
 
 ```
-$ git clone git@github.com/dreamsofautonomy/dotfiles.git
-$ cd dotfiles
+cd $HOME
+git clone https://github.com/PranavKadagadakai/dotfiles.git 
+cd dotfiles
 ```
 
 then use GNU stow to create symlinks
 
 ```
-$ stow .
+stow .
 ```
