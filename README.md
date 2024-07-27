@@ -31,5 +31,5 @@ cd dotfiles
 then use GNU stow to create symlinks
 
 ```
-stow zsh kitty ohmyposh 
+stow zsh kitty ohmyposh redshift syncthing
 ```
