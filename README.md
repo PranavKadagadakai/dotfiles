@@ -25,11 +25,11 @@ First, check out the dotfiles repo in your $HOME directory using git
 ```
 cd $HOME
 git clone https://github.com/PranavKadagadakai/dotfiles.git 
-cd dotfiles
 ```
 
 then use GNU stow to create symlinks
 
 ```
+cd ~/dotfiles
 stow zsh kitty ohmyposh redshift syncthing
 ```
