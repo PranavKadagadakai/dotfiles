@@ -31,5 +31,5 @@ then use GNU stow to create symlinks
 
 ```
 cd ~/dotfiles
-stow zsh kitty ohmyposh redshift syncthing bash vim
+stow zsh kitty ohmyposh redshift syncthing bash vim yazi
 ```
