@@ -733,3 +733,16 @@
 19:15:41.233163 table@remove removed @179
 19:15:41.233640 table@remove removed @185
 19:15:41.233812 table@remove removed @181
+23:01:37.468423 db@close closing
+23:01:37.469706 db@close done T·1.279262ms
+=============== Jul 29, 2024 (IST) ===============
+23:01:38.626110 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+23:01:38.626617 version@stat F·[0 4] S·6MiB[0B 6MiB] Sc·[0.00 0.07]
+23:01:38.626675 db@open opening
+23:01:38.626815 journal@recovery F·1
+23:01:38.637109 journal@recovery recovering @187
+23:01:38.647969 memdb@flush created L0@193 N·159 S·1KiB "\x03TR..ion,v192173":"\x04wg..can,v192021"
+23:01:38.649861 version@stat F·[1 4] S·6MiB[1KiB 6MiB] Sc·[0.25 0.07]
+23:01:38.662895 db@janitor F·8 G·1
+23:01:38.662925 db@janitor removing table-186
+23:01:38.662983 db@open done T·36.290188ms

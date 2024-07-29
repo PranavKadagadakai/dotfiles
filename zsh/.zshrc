@@ -124,4 +124,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# Homebrew config
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Tmuxifier config
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+eval "$(tmuxifier init -)"

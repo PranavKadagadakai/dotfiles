@@ -6387,3 +6387,65 @@
 [2U5BL] 19:39:40 INFO: Established secure connection to TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG at 10.96.0.62:40716-78.61.159.121:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256
 [2U5BL] 19:39:40 INFO: Device TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG client is "syncthing v1.27.3" named "Pranav's Android" at 10.96.0.62:40716-78.61.159.121:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256
 [2U5BL] 19:40:26 INFO: Failed to exchange Hello messages with TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG at 10.96.0.62:32888-94.41.19.246:22067/relay-server/TLS1.3-TLS_AES_128_GCM_SHA256: EOF
+[2U5BL] 19:47:10 INFO: Connection to TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG at 10.96.0.62:40716-78.61.159.121:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256 closed: read timeout
+[2U5BL] 19:49:50 INFO: Established secure connection to TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG at 10.96.0.62:46788-78.61.159.121:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256
+[2U5BL] 19:49:50 INFO: Device TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG client is "syncthing v1.27.3" named "Pranav's Android" at 10.96.0.62:46788-78.61.159.121:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256
+[2U5BL] 19:57:20 INFO: Connection to TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG at 10.96.0.62:46788-78.61.159.121:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256 closed: read timeout
+[2U5BL] 20:00:04 INFO: Established secure connection to TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG at 10.96.0.62:33962-78.61.159.121:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256
+[2U5BL] 20:00:04 INFO: Device TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG client is "syncthing v1.27.3" named "Pranav's Android" at 10.96.0.62:33962-78.61.159.121:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256
+[2U5BL] 20:07:34 INFO: Connection to TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG at 10.96.0.62:33962-78.61.159.121:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256 closed: read timeout
+[2U5BL] 20:10:20 INFO: Established secure connection to TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG at 10.96.0.62:50892-78.61.159.121:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256
+[2U5BL] 20:10:20 INFO: Device TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG client is "syncthing v1.27.3" named "Pranav's Android" at 10.96.0.62:50892-78.61.159.121:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256
+[2U5BL] 20:17:50 INFO: Connection to TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG at 10.96.0.62:50892-78.61.159.121:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256 closed: read timeout
+[2U5BL] 20:22:10 INFO: Joined relay relay://193.160.119.57:22067
+[2U5BL] 20:33:29 INFO: Established secure connection to TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG at 10.96.0.21:44278-78.61.159.121:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256
+[2U5BL] 20:33:29 INFO: Device TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG client is "syncthing v1.27.3" named "Pranav's Android" at 10.96.0.21:44278-78.61.159.121:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256
+[2U5BL] 20:50:59 INFO: Connection to TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG at 10.96.0.21:44278-78.61.159.121:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256 closed: read timeout
+[2U5BL] 20:51:49 INFO: Established secure connection to TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG at 10.96.0.21:51046-193.160.119.57:22067/relay-server/TLS1.3-TLS_AES_128_GCM_SHA256
+[2U5BL] 20:51:49 INFO: Device TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG client is "syncthing v1.27.3" named "Pranav's Android" at 10.96.0.21:51046-193.160.119.57:22067/relay-server/TLS1.3-TLS_AES_128_GCM_SHA256
+[2U5BL] 20:59:19 INFO: Connection to TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG at 10.96.0.21:51046-193.160.119.57:22067/relay-server/TLS1.3-TLS_AES_128_GCM_SHA256 closed: read timeout
+[2U5BL] 21:11:54 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) shutting down
+[2U5BL] 23:01:37 INFO: TCP listener ([::]:22000) shutting down
+[2U5BL] 23:01:37 INFO: Exiting
+[start] 23:01:38 INFO: syncthing v1.18.0-ds1 "Fermium Flea" (go1.18.1 linux-amd64) debian@debian 2023-05-03 08:38:45 UTC
+[2U5BL] 23:01:38 INFO: My ID: 2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF
+[2U5BL] 23:01:39 INFO: Single thread SHA256 performance is 334 MB/s using minio/sha256-simd (244 MB/s using crypto/sha256).
+[2U5BL] 23:01:40 INFO: Hashing performance is 272.06 MB/s
+[2U5BL] 23:01:40 INFO: Starting deadlock detector with 20m0s timeout
+[2U5BL] 23:01:40 INFO: Overall send rate is unlimited, receive rate is unlimited
+[2U5BL] 23:01:40 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) starting
+[2U5BL] 23:01:40 INFO: Ready to synchronize "Obsidian_Vaults" (330tq-02sqx) (sendreceive)
+[2U5BL] 23:01:40 INFO: Using discovery mechanism: global discovery server https://discovery.syncthing.net/v2/?noannounce&id=LYXKCHX-VI3NYZR-ALCJBHF-WMZYSPK-QG6QJA3-MPFYMSO-U56GTUK-NA2MIAW
+[2U5BL] 23:01:40 INFO: Using discovery mechanism: global discovery server https://discovery-v4.syncthing.net/v2/?nolookup&id=LYXKCHX-VI3NYZR-ALCJBHF-WMZYSPK-QG6QJA3-MPFYMSO-U56GTUK-NA2MIAW
+[2U5BL] 23:01:40 INFO: Using discovery mechanism: global discovery server https://discovery-v6.syncthing.net/v2/?nolookup&id=LYXKCHX-VI3NYZR-ALCJBHF-WMZYSPK-QG6QJA3-MPFYMSO-U56GTUK-NA2MIAW
+[2U5BL] 23:01:40 INFO: Using discovery mechanism: IPv4 local broadcast discovery on port 21027
+[2U5BL] 23:01:40 INFO: Using discovery mechanism: IPv6 local multicast discovery on address [ff12::8384]:21027
+[2U5BL] 23:01:40 INFO: TCP listener ([::]:22000) starting
+[2U5BL] 23:01:40 INFO: GUI and API listening on [::]:8384
+[2U5BL] 23:01:40 INFO: Access the GUI via the following URL: https://127.0.0.1:8384/
+[2U5BL] 23:01:40 INFO: My name is "pranav-Inspiron-3576"
+[2U5BL] 23:01:40 INFO: Device TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG is "Pranav's-Android" at [dynamic]
+[2U5BL] 23:01:40 INFO: Ready to synchronize "Coding_for_Practice" (8jfqz-uyl48) (sendreceive)
+[2U5BL] 23:01:40 INFO: Ready to synchronize "Music" (dflpt-yrujf) (sendreceive)
+[2U5BL] 23:01:40 INFO: Ready to synchronize "Pictures" (hhbwb-nsi4g) (sendreceive)
+[2U5BL] 23:01:40 INFO: Ready to synchronize "Pokemon_Emu_Games" (lhg27-9scgv) (sendreceive)
+[2U5BL] 23:01:40 INFO: Ready to synchronize "Documents" (tiqkg-o7l9e) (sendreceive)
+[2U5BL] 23:01:40 INFO: Ready to synchronize "Videos" (wgf21-b6vn7) (sendreceive)
+[2U5BL] 23:01:40 INFO: Completed initial scan of sendreceive folder "Coding_for_Practice" (8jfqz-uyl48)
+[2U5BL] 23:01:40 INFO: Completed initial scan of sendreceive folder "Obsidian_Vaults" (330tq-02sqx)
+[2U5BL] 23:01:40 INFO: Completed initial scan of sendreceive folder "Music" (dflpt-yrujf)
+[2U5BL] 23:01:40 INFO: Completed initial scan of sendreceive folder "Pictures" (hhbwb-nsi4g)
+[2U5BL] 23:01:40 INFO: Completed initial scan of sendreceive folder "Videos" (wgf21-b6vn7)
+[2U5BL] 23:01:40 INFO: Completed initial scan of sendreceive folder "Pokemon_Emu_Games" (lhg27-9scgv)
+[2U5BL] 23:01:40 INFO: Completed initial scan of sendreceive folder "Documents" (tiqkg-o7l9e)
+[2U5BL] 23:01:50 INFO: Detected 0 NAT services
+[2U5BL] 23:02:00 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) shutting down
+[2U5BL] 23:02:00 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) starting
+[2U5BL] 23:02:00 INFO: listenerSupervisor@dynamic+https://relays.syncthing.net/endpoint: service dynamic+https://relays.syncthing.net/endpoint failed: Get "https://relays.syncthing.net/endpoint": dial tcp: lookup relays.syncthing.net: no such host
+[2U5BL] 23:02:20 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) shutting down
+[2U5BL] 23:02:20 INFO: listenerSupervisor@dynamic+https://relays.syncthing.net/endpoint: service dynamic+https://relays.syncthing.net/endpoint failed: Get "https://relays.syncthing.net/endpoint": dial tcp: lookup relays.syncthing.net: no such host
+[2U5BL] 23:02:20 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) starting
+[2U5BL] 23:02:40 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) shutting down
+[2U5BL] 23:02:40 INFO: listenerSupervisor@dynamic+https://relays.syncthing.net/endpoint: service dynamic+https://relays.syncthing.net/endpoint failed: Get "https://relays.syncthing.net/endpoint": dial tcp: lookup relays.syncthing.net: no such host
+[2U5BL] 23:03:51 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) starting
+[2U5BL] 23:06:44 INFO: Joined relay relay://5.135.177.35:22067
