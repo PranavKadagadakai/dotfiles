@@ -190,3 +190,5 @@ function extract {
 
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+. "$HOME/.cargo/env"
+source ~/.bash_completion/alacritty

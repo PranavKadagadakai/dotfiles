@@ -130,3 +130,4 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Tmuxifier config
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 eval "$(tmuxifier init -)"
+fpath+=${ZDOTDIR:-~}/.zsh_functions
