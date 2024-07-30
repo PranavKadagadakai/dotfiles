@@ -6449,3 +6449,7 @@
 [2U5BL] 23:02:40 INFO: listenerSupervisor@dynamic+https://relays.syncthing.net/endpoint: service dynamic+https://relays.syncthing.net/endpoint failed: Get "https://relays.syncthing.net/endpoint": dial tcp: lookup relays.syncthing.net: no such host
 [2U5BL] 23:03:51 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) starting
 [2U5BL] 23:06:44 INFO: Joined relay relay://5.135.177.35:22067
+[2U5BL] 00:29:45 INFO: Joined relay relay://193.219.97.110:22067
+[2U5BL] 00:51:41 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) shutting down
+[2U5BL] 00:51:42 INFO: TCP listener ([::]:22000) shutting down
+[2U5BL] 00:51:42 INFO: Exiting
