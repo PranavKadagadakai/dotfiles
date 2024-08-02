@@ -192,3 +192,5 @@ function extract {
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 . "$HOME/.cargo/env"
 source ~/.bash_completion/alacritty
+# starship initialisation
+eval eval -- "$(/usr/local/bin/starship init bash --print-full-init)"

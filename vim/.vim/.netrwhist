@@ -1,3 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/tmp/systemd-private-c1f2fd0f23ef4cffbdfc71901678d9db-ModemManager.service-fXh152'
 let g:netrw_dirhist_1='/home/pranav/.oh-my-zsh'
