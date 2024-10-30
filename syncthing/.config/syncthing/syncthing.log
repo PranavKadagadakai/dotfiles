@@ -9916,3 +9916,5 @@
 [start] 2024/10/30 13:56:12 WARNING: Error opening database: resource temporarily unavailable (is another instance of Syncthing running?)
 [start] 2024/10/30 13:56:13 INFO: syncthing v1.27.2-ds4 "Gold Grasshopper" (go1.22.2 linux-amd64) debian@debian 2024-07-15 08:12:51 UTC
 [start] 2024/10/30 13:56:13 WARNING: Error opening database: resource temporarily unavailable (is another instance of Syncthing running?)
+[2U5BL] 2024/10/30 14:42:10 INFO: Joined relay relay://195.161.62.49:22067
+[2U5BL] 2024/10/30 14:46:13 INFO: Joined relay relay://152.70.65.247:22067
