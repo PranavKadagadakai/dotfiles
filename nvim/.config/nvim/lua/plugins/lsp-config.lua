@@ -23,7 +23,13 @@ return {
       lspconfig.tailwindcss.setup({
         capabilities = capabilities
       })
-      lspconfig.tsserver.setup({
+      lspconfig.jsonls.setup({
+        capabilities = capabilities
+      })
+      lspconfig.bashls.setup({
+        capabilities = capabilities
+      })
+      lspconfig.yamlls.setup({
         capabilities = capabilities
       })
       lspconfig.solargraph.setup({
