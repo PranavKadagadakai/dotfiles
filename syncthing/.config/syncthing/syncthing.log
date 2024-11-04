@@ -12259,3 +12259,65 @@
 [2U5BL] 2024/11/04 15:38:48 INFO: Connection to TRYRS5S at 10.98.0.8:38998-178.252.89.64:22067/relay-server/TLS1.3-TLS_AES_128_GCM_SHA256/WAN-P50-604NDFQKR60N8RKSVEMHD86PN6 closed: read timeout
 [2U5BL] 2024/11/04 15:39:10 INFO: Established secure connection to TRYRS5S at 10.10.3.188:42176-45.138.55.71:443/relay-server/TLS1.3-TLS_AES_128_GCM_SHA256/WAN-P50-604NG9USD0P68FQ26EEHHDLPUK
 [2U5BL] 2024/11/04 15:39:10 INFO: Device TRYRS5S client is "syncthing v1.27.3" named "Pranav's Android" at 10.10.3.188:42176-45.138.55.71:443/relay-server/TLS1.3-TLS_AES_128_GCM_SHA256/WAN-P50-604NG9USD0P68FQ26EEHHDLPUK
+[2U5BL] 2024/11/04 15:51:41 INFO: Lost primary connection to TRYRS5S at 10.10.3.188:42176-45.138.55.71:443/relay-server/TLS1.3-TLS_AES_128_GCM_SHA256/WAN-P50-604NG9USD0P68FQ26EEHHDLPUK: read timeout (0 remain)
+[2U5BL] 2024/11/04 15:51:41 INFO: Connection to TRYRS5S at 10.10.3.188:42176-45.138.55.71:443/relay-server/TLS1.3-TLS_AES_128_GCM_SHA256/WAN-P50-604NG9USD0P68FQ26EEHHDLPUK closed: read timeout
+[2U5BL] 2024/11/04 15:55:35 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) shutting down
+[2U5BL] 2024/11/04 15:55:35 INFO: QUIC listener ([::]:22000) shutting down
+[2U5BL] 2024/11/04 18:55:16 INFO: TCP listener ([::]:22000) shutting down
+[2U5BL] 2024/11/04 18:55:16 INFO: Exiting
+[start] 2024/11/04 18:55:17 INFO: syncthing v1.27.2-ds4 "Gold Grasshopper" (go1.22.2 linux-amd64) debian@debian 2024-07-15 08:12:51 UTC
+[2U5BL] 2024/11/04 18:55:17 INFO: My ID: 2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF
+[2U5BL] 2024/11/04 18:55:18 INFO: Single thread SHA256 performance is 228 MB/s using minio/sha256-simd (207 MB/s using crypto/sha256).
+[2U5BL] 2024/11/04 18:55:19 INFO: Hashing performance is 277.91 MB/s
+[2U5BL] 2024/11/04 18:55:19 INFO: Overall send rate is unlimited, receive rate is unlimited
+2024/11/04 18:55:19 failed to sufficiently increase receive buffer size (was: 208 kiB, wanted: 2048 kiB, got: 416 kiB). See https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes for details.
+[2U5BL] 2024/11/04 18:55:19 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) starting
+[2U5BL] 2024/11/04 18:55:19 INFO: Using discovery mechanism: global discovery server https://discovery.syncthing.net/v2/?noannounce&id=LYXKCHX-VI3NYZR-ALCJBHF-WMZYSPK-QG6QJA3-MPFYMSO-U56GTUK-NA2MIAW
+[2U5BL] 2024/11/04 18:55:19 INFO: Using discovery mechanism: global discovery server https://discovery-v4.syncthing.net/v2/?nolookup&id=LYXKCHX-VI3NYZR-ALCJBHF-WMZYSPK-QG6QJA3-MPFYMSO-U56GTUK-NA2MIAW
+[2U5BL] 2024/11/04 18:55:19 INFO: Using discovery mechanism: global discovery server https://discovery-v6.syncthing.net/v2/?nolookup&id=LYXKCHX-VI3NYZR-ALCJBHF-WMZYSPK-QG6QJA3-MPFYMSO-U56GTUK-NA2MIAW
+[2U5BL] 2024/11/04 18:55:19 INFO: Using discovery mechanism: IPv4 local broadcast discovery on port 21027
+[2U5BL] 2024/11/04 18:55:19 INFO: Using discovery mechanism: IPv6 local multicast discovery on address [ff12::8384]:21027
+[2U5BL] 2024/11/04 18:55:19 INFO: QUIC listener ([::]:22000) starting
+[2U5BL] 2024/11/04 18:55:19 INFO: TCP listener ([::]:22000) starting
+[2U5BL] 2024/11/04 18:55:19 INFO: Ready to synchronize "Obsidian_Vaults" (330tq-02sqx) (sendreceive)
+[2U5BL] 2024/11/04 18:55:19 INFO: Detected 0 NAT services
+[2U5BL] 2024/11/04 18:55:19 INFO: Ready to synchronize "Pictures" (7wohy-vvpdx) (sendreceive)
+[2U5BL] 2024/11/04 18:55:19 INFO: GUI and API listening on [::]:8384
+[2U5BL] 2024/11/04 18:55:19 INFO: Access the GUI via the following URL: https://127.0.0.1:8384/
+[2U5BL] 2024/11/04 18:55:19 INFO: My name is "pranav-Inspiron-3576"
+[2U5BL] 2024/11/04 18:55:19 INFO: Device TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG is "Pranav's-Android" at [dynamic]
+[2U5BL] 2024/11/04 18:55:19 INFO: Ready to synchronize "Coding_for_Practice" (8jfqz-uyl48) (sendreceive)
+[2U5BL] 2024/11/04 18:55:19 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) shutting down
+[2U5BL] 2024/11/04 18:55:19 INFO: listenerSupervisor@dynamic+https://relays.syncthing.net/endpoint: service dynamic+https://relays.syncthing.net/endpoint failed: Get "https://relays.syncthing.net/endpoint": dial tcp: lookup relays.syncthing.net on 45.90.30.107:53: dial udp 45.90.30.107:53: connect: network is unreachable
+[2U5BL] 2024/11/04 18:55:19 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) starting
+[2U5BL] 2024/11/04 18:55:19 INFO: Ready to synchronize "Music" (dflpt-yrujf) (sendreceive)
+[2U5BL] 2024/11/04 18:55:19 INFO: Ready to synchronize "Pokemon_Emu_Games" (lhg27-9scgv) (sendreceive)
+[2U5BL] 2024/11/04 18:55:19 INFO: Ready to synchronize "Documents" (tiqkg-o7l9e) (sendreceive)
+[2U5BL] 2024/11/04 18:55:19 INFO: Ready to synchronize "Videos" (wgf21-b6vn7) (sendreceive)
+[2U5BL] 2024/11/04 18:55:19 INFO: Ready to synchronize "Backups" (x8qlt-trqt5) (sendreceive)
+[2U5BL] 2024/11/04 18:55:19 INFO: Completed initial scan of sendreceive folder "Coding_for_Practice" (8jfqz-uyl48)
+[2U5BL] 2024/11/04 18:55:19 INFO: Completed initial scan of sendreceive folder "Obsidian_Vaults" (330tq-02sqx)
+[2U5BL] 2024/11/04 18:55:19 INFO: Completed initial scan of sendreceive folder "Pokemon_Emu_Games" (lhg27-9scgv)
+[2U5BL] 2024/11/04 18:55:19 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) shutting down
+[2U5BL] 2024/11/04 18:55:19 INFO: listenerSupervisor@dynamic+https://relays.syncthing.net/endpoint: service dynamic+https://relays.syncthing.net/endpoint failed: Get "https://relays.syncthing.net/endpoint": dial tcp: lookup relays.syncthing.net on 45.90.30.107:53: dial udp 45.90.30.107:53: connect: network is unreachable
+[2U5BL] 2024/11/04 18:55:19 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) starting
+[2U5BL] 2024/11/04 18:55:19 INFO: Completed initial scan of sendreceive folder "Music" (dflpt-yrujf)
+[2U5BL] 2024/11/04 18:55:19 INFO: Completed initial scan of sendreceive folder "Backups" (x8qlt-trqt5)
+[2U5BL] 2024/11/04 18:55:19 INFO: Completed initial scan of sendreceive folder "Videos" (wgf21-b6vn7)
+[2U5BL] 2024/11/04 18:55:19 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) shutting down
+[2U5BL] 2024/11/04 18:55:19 INFO: listenerSupervisor@dynamic+https://relays.syncthing.net/endpoint: service dynamic+https://relays.syncthing.net/endpoint failed: Get "https://relays.syncthing.net/endpoint": dial tcp: lookup relays.syncthing.net on 45.90.30.107:53: dial udp 45.90.30.107:53: connect: network is unreachable
+[2U5BL] 2024/11/04 18:55:19 INFO: Completed initial scan of sendreceive folder "Pictures" (7wohy-vvpdx)
+[2U5BL] 2024/11/04 18:55:19 INFO: Completed initial scan of sendreceive folder "Documents" (tiqkg-o7l9e)
+[2U5BL] 2024/11/04 18:56:23 INFO: Relay listener (dynamic+https://relays.syncthing.net/endpoint) starting
+[2U5BL] 2024/11/04 18:57:01 INFO: Established secure connection to TRYRS5S at 192.168.1.8:47660-135.181.19.227:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256/WAN-P50-604ORFOCJLQLCK437HCVC1EAFU
+[2U5BL] 2024/11/04 18:57:01 INFO: Device TRYRS5S client is "syncthing v1.27.3" named "Pranav's Android" at 192.168.1.8:47660-135.181.19.227:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256/WAN-P50-604ORFOCJLQLCK437HCVC1EAFU
+[2U5BL] 2024/11/04 18:59:27 INFO: Joined relay relay://152.70.65.247:22067
+[2U5BL] 2024/11/04 19:00:29 INFO: quic://0.0.0.0:22000 detected NAT type: Symmetric NAT
+[2U5BL] 2024/11/04 19:19:31 INFO: Joined relay relay://129.154.227.170:22067
+[2U5BL] 2024/11/04 19:23:49 INFO: Joined relay relay://172.104.206.174:22067
+[2U5BL] 2024/11/04 19:24:32 INFO: Lost primary connection to TRYRS5S at 192.168.1.8:47660-135.181.19.227:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256/WAN-P50-604ORFOCJLQLCK437HCVC1EAFU: reading length: read tcp 192.168.1.8:47660->135.181.19.227:22067: read: connection reset by peer (0 remain)
+[2U5BL] 2024/11/04 19:24:32 INFO: Connection to TRYRS5S at 192.168.1.8:47660-135.181.19.227:22067/relay-client/TLS1.3-TLS_AES_128_GCM_SHA256/WAN-P50-604ORFOCJLQLCK437HCVC1EAFU closed: reading length: read tcp 192.168.1.8:47660->135.181.19.227:22067: read: connection reset by peer
+[2U5BL] 2024/11/04 19:26:29 INFO: Listen (BEP/relay): joining session: dial tcp 172.104.206.174:22067: i/o timeout
+[2U5BL] 2024/11/04 19:28:49 INFO: Joined relay relay://140.245.24.246:443
+[2U5BL] 2024/11/04 19:31:43 INFO: Established secure connection to TRYRS5S at 192.168.1.8:33718-140.245.24.246:443/relay-server/TLS1.3-TLS_AES_128_GCM_SHA256/WAN-P50-604P328BGK2SOFM9R5HK2C294Q
+[2U5BL] 2024/11/04 19:31:43 INFO: Device TRYRS5S client is "syncthing v1.27.3" named "Pranav's Android" at 192.168.1.8:33718-140.245.24.246:443/relay-server/TLS1.3-TLS_AES_128_GCM_SHA256/WAN-P50-604P328BGK2SOFM9R5HK2C294Q

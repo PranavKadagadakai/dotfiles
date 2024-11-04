@@ -13,3 +13,5 @@
 	process = git-lfs filter-process
 [init]
 	defaultBranch = main
+[http]
+	postBuffer = 524288000
