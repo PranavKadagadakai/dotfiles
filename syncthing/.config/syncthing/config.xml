@@ -1,54 +1,10 @@
 <configuration version="37">
-    <folder id="330tq-02sqx" label="Obsidian_Vaults" path="/home/pranav/Obsidian_Vaults" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+    <folder id="1awrt-4daa3" label="Obsidian_Vaults" path="~/Obsidian_Vaults" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
         <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
-        <minDiskFree unit="%">1</minDiskFree>
-        <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
-            <fsPath></fsPath>
-            <fsType>basic</fsType>
-        </versioning>
-        <copiers>0</copiers>
-        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
-        <hashers>0</hashers>
-        <order>random</order>
-        <ignoreDelete>false</ignoreDelete>
-        <scanProgressIntervalS>0</scanProgressIntervalS>
-        <pullerPauseS>0</pullerPauseS>
-        <maxConflicts>10</maxConflicts>
-        <disableSparseFiles>false</disableSparseFiles>
-        <disableTempIndexes>false</disableTempIndexes>
-        <paused>false</paused>
-        <weakHashThresholdPct>25</weakHashThresholdPct>
-        <markerName>.stfolder</markerName>
-        <copyOwnershipFromParent>false</copyOwnershipFromParent>
-        <modTimeWindowS>0</modTimeWindowS>
-        <maxConcurrentWrites>2</maxConcurrentWrites>
-        <disableFsync>false</disableFsync>
-        <blockPullOrder>standard</blockPullOrder>
-        <copyRangeMethod>standard</copyRangeMethod>
-        <caseSensitiveFS>false</caseSensitiveFS>
-        <junctionsAsDirs>false</junctionsAsDirs>
-        <syncOwnership>false</syncOwnership>
-        <sendOwnership>false</sendOwnership>
-        <syncXattrs>false</syncXattrs>
-        <sendXattrs>false</sendXattrs>
-        <xattrFilter>
-            <maxSingleEntrySize>0</maxSingleEntrySize>
-            <maxTotalSize>0</maxTotalSize>
-        </xattrFilter>
-    </folder>
-    <folder id="7wohy-vvpdx" label="Pictures" path="~/Pictures" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
-        <filesystemType>basic</filesystemType>
-        <device id="TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
-        <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" introducedBy="">
+        <device id="7G62IJD-XDA6ULB-W4D5QFJ-IJSXWJF-QAEIJIV-NKWMDFG-IZOOTG6-WMNXJQS" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
         <minDiskFree unit="%">1</minDiskFree>
@@ -87,232 +43,12 @@
             <maxTotalSize>4096</maxTotalSize>
         </xattrFilter>
     </folder>
-    <folder id="8jfqz-uyl48" label="Coding_for_Practice" path="/home/pranav/Coding_for_Practice" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+    <folder id="6t45d-1xdss" label="Coding_for_Practice" path="~/Coding_for_Practice" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
         <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
-        <minDiskFree unit="%">1</minDiskFree>
-        <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
-            <fsPath></fsPath>
-            <fsType>basic</fsType>
-        </versioning>
-        <copiers>0</copiers>
-        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
-        <hashers>0</hashers>
-        <order>random</order>
-        <ignoreDelete>false</ignoreDelete>
-        <scanProgressIntervalS>0</scanProgressIntervalS>
-        <pullerPauseS>0</pullerPauseS>
-        <maxConflicts>10</maxConflicts>
-        <disableSparseFiles>false</disableSparseFiles>
-        <disableTempIndexes>false</disableTempIndexes>
-        <paused>false</paused>
-        <weakHashThresholdPct>25</weakHashThresholdPct>
-        <markerName>.stfolder</markerName>
-        <copyOwnershipFromParent>false</copyOwnershipFromParent>
-        <modTimeWindowS>0</modTimeWindowS>
-        <maxConcurrentWrites>2</maxConcurrentWrites>
-        <disableFsync>false</disableFsync>
-        <blockPullOrder>standard</blockPullOrder>
-        <copyRangeMethod>standard</copyRangeMethod>
-        <caseSensitiveFS>false</caseSensitiveFS>
-        <junctionsAsDirs>false</junctionsAsDirs>
-        <syncOwnership>false</syncOwnership>
-        <sendOwnership>false</sendOwnership>
-        <syncXattrs>false</syncXattrs>
-        <sendXattrs>false</sendXattrs>
-        <xattrFilter>
-            <maxSingleEntrySize>0</maxSingleEntrySize>
-            <maxTotalSize>0</maxTotalSize>
-        </xattrFilter>
-    </folder>
-    <folder id="dflpt-yrujf" label="Music" path="/home/pranav/Music" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
-        <filesystemType>basic</filesystemType>
-        <device id="TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
-        <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
-        <minDiskFree unit="%">1</minDiskFree>
-        <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
-            <fsPath></fsPath>
-            <fsType>basic</fsType>
-        </versioning>
-        <copiers>0</copiers>
-        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
-        <hashers>0</hashers>
-        <order>random</order>
-        <ignoreDelete>false</ignoreDelete>
-        <scanProgressIntervalS>0</scanProgressIntervalS>
-        <pullerPauseS>0</pullerPauseS>
-        <maxConflicts>10</maxConflicts>
-        <disableSparseFiles>false</disableSparseFiles>
-        <disableTempIndexes>false</disableTempIndexes>
-        <paused>false</paused>
-        <weakHashThresholdPct>25</weakHashThresholdPct>
-        <markerName>.stfolder</markerName>
-        <copyOwnershipFromParent>false</copyOwnershipFromParent>
-        <modTimeWindowS>0</modTimeWindowS>
-        <maxConcurrentWrites>2</maxConcurrentWrites>
-        <disableFsync>false</disableFsync>
-        <blockPullOrder>standard</blockPullOrder>
-        <copyRangeMethod>standard</copyRangeMethod>
-        <caseSensitiveFS>false</caseSensitiveFS>
-        <junctionsAsDirs>false</junctionsAsDirs>
-        <syncOwnership>false</syncOwnership>
-        <sendOwnership>false</sendOwnership>
-        <syncXattrs>false</syncXattrs>
-        <sendXattrs>false</sendXattrs>
-        <xattrFilter>
-            <maxSingleEntrySize>0</maxSingleEntrySize>
-            <maxTotalSize>0</maxTotalSize>
-        </xattrFilter>
-    </folder>
-    <folder id="lhg27-9scgv" label="Pokemon_Emu_Games" path="/home/pranav/Pokemon_Emu_Games" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
-        <filesystemType>basic</filesystemType>
-        <device id="TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
-        <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
-        <minDiskFree unit="%">1</minDiskFree>
-        <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
-            <fsPath></fsPath>
-            <fsType>basic</fsType>
-        </versioning>
-        <copiers>0</copiers>
-        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
-        <hashers>0</hashers>
-        <order>random</order>
-        <ignoreDelete>false</ignoreDelete>
-        <scanProgressIntervalS>0</scanProgressIntervalS>
-        <pullerPauseS>0</pullerPauseS>
-        <maxConflicts>10</maxConflicts>
-        <disableSparseFiles>false</disableSparseFiles>
-        <disableTempIndexes>false</disableTempIndexes>
-        <paused>false</paused>
-        <weakHashThresholdPct>25</weakHashThresholdPct>
-        <markerName>.stfolder</markerName>
-        <copyOwnershipFromParent>false</copyOwnershipFromParent>
-        <modTimeWindowS>0</modTimeWindowS>
-        <maxConcurrentWrites>2</maxConcurrentWrites>
-        <disableFsync>false</disableFsync>
-        <blockPullOrder>standard</blockPullOrder>
-        <copyRangeMethod>standard</copyRangeMethod>
-        <caseSensitiveFS>false</caseSensitiveFS>
-        <junctionsAsDirs>false</junctionsAsDirs>
-        <syncOwnership>false</syncOwnership>
-        <sendOwnership>false</sendOwnership>
-        <syncXattrs>false</syncXattrs>
-        <sendXattrs>false</sendXattrs>
-        <xattrFilter>
-            <maxSingleEntrySize>0</maxSingleEntrySize>
-            <maxTotalSize>0</maxTotalSize>
-        </xattrFilter>
-    </folder>
-    <folder id="tiqkg-o7l9e" label="Documents" path="/home/pranav/Documents" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
-        <filesystemType>basic</filesystemType>
-        <device id="TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
-        <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
-        <minDiskFree unit="%">1</minDiskFree>
-        <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
-            <fsPath></fsPath>
-            <fsType>basic</fsType>
-        </versioning>
-        <copiers>0</copiers>
-        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
-        <hashers>0</hashers>
-        <order>random</order>
-        <ignoreDelete>false</ignoreDelete>
-        <scanProgressIntervalS>0</scanProgressIntervalS>
-        <pullerPauseS>0</pullerPauseS>
-        <maxConflicts>10</maxConflicts>
-        <disableSparseFiles>false</disableSparseFiles>
-        <disableTempIndexes>false</disableTempIndexes>
-        <paused>false</paused>
-        <weakHashThresholdPct>25</weakHashThresholdPct>
-        <markerName>.stfolder</markerName>
-        <copyOwnershipFromParent>false</copyOwnershipFromParent>
-        <modTimeWindowS>0</modTimeWindowS>
-        <maxConcurrentWrites>2</maxConcurrentWrites>
-        <disableFsync>false</disableFsync>
-        <blockPullOrder>standard</blockPullOrder>
-        <copyRangeMethod>standard</copyRangeMethod>
-        <caseSensitiveFS>false</caseSensitiveFS>
-        <junctionsAsDirs>false</junctionsAsDirs>
-        <syncOwnership>false</syncOwnership>
-        <sendOwnership>false</sendOwnership>
-        <syncXattrs>false</syncXattrs>
-        <sendXattrs>false</sendXattrs>
-        <xattrFilter>
-            <maxSingleEntrySize>0</maxSingleEntrySize>
-            <maxTotalSize>0</maxTotalSize>
-        </xattrFilter>
-    </folder>
-    <folder id="wgf21-b6vn7" label="Videos" path="/home/pranav/Videos" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
-        <filesystemType>basic</filesystemType>
-        <device id="TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
-        <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
-        <minDiskFree unit="%">1</minDiskFree>
-        <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
-            <fsPath></fsPath>
-            <fsType>basic</fsType>
-        </versioning>
-        <copiers>0</copiers>
-        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
-        <hashers>0</hashers>
-        <order>random</order>
-        <ignoreDelete>false</ignoreDelete>
-        <scanProgressIntervalS>0</scanProgressIntervalS>
-        <pullerPauseS>0</pullerPauseS>
-        <maxConflicts>10</maxConflicts>
-        <disableSparseFiles>false</disableSparseFiles>
-        <disableTempIndexes>false</disableTempIndexes>
-        <paused>false</paused>
-        <weakHashThresholdPct>25</weakHashThresholdPct>
-        <markerName>.stfolder</markerName>
-        <copyOwnershipFromParent>false</copyOwnershipFromParent>
-        <modTimeWindowS>0</modTimeWindowS>
-        <maxConcurrentWrites>2</maxConcurrentWrites>
-        <disableFsync>false</disableFsync>
-        <blockPullOrder>standard</blockPullOrder>
-        <copyRangeMethod>standard</copyRangeMethod>
-        <caseSensitiveFS>false</caseSensitiveFS>
-        <junctionsAsDirs>false</junctionsAsDirs>
-        <syncOwnership>false</syncOwnership>
-        <sendOwnership>false</sendOwnership>
-        <syncXattrs>false</syncXattrs>
-        <sendXattrs>false</sendXattrs>
-        <xattrFilter>
-            <maxSingleEntrySize>0</maxSingleEntrySize>
-            <maxTotalSize>0</maxTotalSize>
-        </xattrFilter>
-    </folder>
-    <folder id="x8qlt-trqt5" label="Backups" path="~/Backups" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
-        <filesystemType>basic</filesystemType>
-        <device id="TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
-        <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" introducedBy="">
+        <device id="7G62IJD-XDA6ULB-W4D5QFJ-IJSXWJF-QAEIJIV-NKWMDFG-IZOOTG6-WMNXJQS" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
         <minDiskFree unit="%">1</minDiskFree>
@@ -351,7 +87,271 @@
             <maxTotalSize>4096</maxTotalSize>
         </xattrFilter>
     </folder>
-    <device id="TRYRS5S-RH2Y4VL-OQPFLVA-PEWEFBE-2WHAIT4-ANNKUNA-VP27D2K-VRNX7AG" name="Pranav&#39;s-Android" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
+    <folder id="bd6kc-e3bh8" label="Pictures" path="~/Pictures" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+        <filesystemType>basic</filesystemType>
+        <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <device id="7G62IJD-XDA6ULB-W4D5QFJ-IJSXWJF-QAEIJIV-NKWMDFG-IZOOTG6-WMNXJQS" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <minDiskFree unit="%">1</minDiskFree>
+        <versioning>
+            <cleanupIntervalS>3600</cleanupIntervalS>
+            <fsPath></fsPath>
+            <fsType>basic</fsType>
+        </versioning>
+        <copiers>0</copiers>
+        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
+        <hashers>0</hashers>
+        <order>random</order>
+        <ignoreDelete>false</ignoreDelete>
+        <scanProgressIntervalS>0</scanProgressIntervalS>
+        <pullerPauseS>0</pullerPauseS>
+        <maxConflicts>10</maxConflicts>
+        <disableSparseFiles>false</disableSparseFiles>
+        <disableTempIndexes>false</disableTempIndexes>
+        <paused>false</paused>
+        <weakHashThresholdPct>25</weakHashThresholdPct>
+        <markerName>.stfolder</markerName>
+        <copyOwnershipFromParent>false</copyOwnershipFromParent>
+        <modTimeWindowS>0</modTimeWindowS>
+        <maxConcurrentWrites>2</maxConcurrentWrites>
+        <disableFsync>false</disableFsync>
+        <blockPullOrder>standard</blockPullOrder>
+        <copyRangeMethod>standard</copyRangeMethod>
+        <caseSensitiveFS>false</caseSensitiveFS>
+        <junctionsAsDirs>false</junctionsAsDirs>
+        <syncOwnership>false</syncOwnership>
+        <sendOwnership>false</sendOwnership>
+        <syncXattrs>false</syncXattrs>
+        <sendXattrs>false</sendXattrs>
+        <xattrFilter>
+            <maxSingleEntrySize>1024</maxSingleEntrySize>
+            <maxTotalSize>4096</maxTotalSize>
+        </xattrFilter>
+    </folder>
+    <folder id="ixq5l-df167" label="Videos" path="~/Videos" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+        <filesystemType>basic</filesystemType>
+        <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <device id="7G62IJD-XDA6ULB-W4D5QFJ-IJSXWJF-QAEIJIV-NKWMDFG-IZOOTG6-WMNXJQS" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <minDiskFree unit="%">1</minDiskFree>
+        <versioning>
+            <cleanupIntervalS>3600</cleanupIntervalS>
+            <fsPath></fsPath>
+            <fsType>basic</fsType>
+        </versioning>
+        <copiers>0</copiers>
+        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
+        <hashers>0</hashers>
+        <order>random</order>
+        <ignoreDelete>false</ignoreDelete>
+        <scanProgressIntervalS>0</scanProgressIntervalS>
+        <pullerPauseS>0</pullerPauseS>
+        <maxConflicts>10</maxConflicts>
+        <disableSparseFiles>false</disableSparseFiles>
+        <disableTempIndexes>false</disableTempIndexes>
+        <paused>false</paused>
+        <weakHashThresholdPct>25</weakHashThresholdPct>
+        <markerName>.stfolder</markerName>
+        <copyOwnershipFromParent>false</copyOwnershipFromParent>
+        <modTimeWindowS>0</modTimeWindowS>
+        <maxConcurrentWrites>2</maxConcurrentWrites>
+        <disableFsync>false</disableFsync>
+        <blockPullOrder>standard</blockPullOrder>
+        <copyRangeMethod>standard</copyRangeMethod>
+        <caseSensitiveFS>false</caseSensitiveFS>
+        <junctionsAsDirs>false</junctionsAsDirs>
+        <syncOwnership>false</syncOwnership>
+        <sendOwnership>false</sendOwnership>
+        <syncXattrs>false</syncXattrs>
+        <sendXattrs>false</sendXattrs>
+        <xattrFilter>
+            <maxSingleEntrySize>1024</maxSingleEntrySize>
+            <maxTotalSize>4096</maxTotalSize>
+        </xattrFilter>
+    </folder>
+    <folder id="o5v1e-iyvwn" label="Pokemon_Emu_Games" path="~/Pokemon_Emu_Games" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+        <filesystemType>basic</filesystemType>
+        <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <device id="7G62IJD-XDA6ULB-W4D5QFJ-IJSXWJF-QAEIJIV-NKWMDFG-IZOOTG6-WMNXJQS" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <minDiskFree unit="%">1</minDiskFree>
+        <versioning>
+            <cleanupIntervalS>3600</cleanupIntervalS>
+            <fsPath></fsPath>
+            <fsType>basic</fsType>
+        </versioning>
+        <copiers>0</copiers>
+        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
+        <hashers>0</hashers>
+        <order>random</order>
+        <ignoreDelete>false</ignoreDelete>
+        <scanProgressIntervalS>0</scanProgressIntervalS>
+        <pullerPauseS>0</pullerPauseS>
+        <maxConflicts>10</maxConflicts>
+        <disableSparseFiles>false</disableSparseFiles>
+        <disableTempIndexes>false</disableTempIndexes>
+        <paused>false</paused>
+        <weakHashThresholdPct>25</weakHashThresholdPct>
+        <markerName>.stfolder</markerName>
+        <copyOwnershipFromParent>false</copyOwnershipFromParent>
+        <modTimeWindowS>0</modTimeWindowS>
+        <maxConcurrentWrites>2</maxConcurrentWrites>
+        <disableFsync>false</disableFsync>
+        <blockPullOrder>standard</blockPullOrder>
+        <copyRangeMethod>standard</copyRangeMethod>
+        <caseSensitiveFS>false</caseSensitiveFS>
+        <junctionsAsDirs>false</junctionsAsDirs>
+        <syncOwnership>false</syncOwnership>
+        <sendOwnership>false</sendOwnership>
+        <syncXattrs>false</syncXattrs>
+        <sendXattrs>false</sendXattrs>
+        <xattrFilter>
+            <maxSingleEntrySize>1024</maxSingleEntrySize>
+            <maxTotalSize>4096</maxTotalSize>
+        </xattrFilter>
+    </folder>
+    <folder id="r3nv7-kyy7u" label="Backups" path="~/Backups" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+        <filesystemType>basic</filesystemType>
+        <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <device id="7G62IJD-XDA6ULB-W4D5QFJ-IJSXWJF-QAEIJIV-NKWMDFG-IZOOTG6-WMNXJQS" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <minDiskFree unit="%">1</minDiskFree>
+        <versioning>
+            <cleanupIntervalS>3600</cleanupIntervalS>
+            <fsPath></fsPath>
+            <fsType>basic</fsType>
+        </versioning>
+        <copiers>0</copiers>
+        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
+        <hashers>0</hashers>
+        <order>random</order>
+        <ignoreDelete>false</ignoreDelete>
+        <scanProgressIntervalS>0</scanProgressIntervalS>
+        <pullerPauseS>0</pullerPauseS>
+        <maxConflicts>10</maxConflicts>
+        <disableSparseFiles>false</disableSparseFiles>
+        <disableTempIndexes>false</disableTempIndexes>
+        <paused>false</paused>
+        <weakHashThresholdPct>25</weakHashThresholdPct>
+        <markerName>.stfolder</markerName>
+        <copyOwnershipFromParent>false</copyOwnershipFromParent>
+        <modTimeWindowS>0</modTimeWindowS>
+        <maxConcurrentWrites>2</maxConcurrentWrites>
+        <disableFsync>false</disableFsync>
+        <blockPullOrder>standard</blockPullOrder>
+        <copyRangeMethod>standard</copyRangeMethod>
+        <caseSensitiveFS>false</caseSensitiveFS>
+        <junctionsAsDirs>false</junctionsAsDirs>
+        <syncOwnership>false</syncOwnership>
+        <sendOwnership>false</sendOwnership>
+        <syncXattrs>false</syncXattrs>
+        <sendXattrs>false</sendXattrs>
+        <xattrFilter>
+            <maxSingleEntrySize>1024</maxSingleEntrySize>
+            <maxTotalSize>4096</maxTotalSize>
+        </xattrFilter>
+    </folder>
+    <folder id="sawxw-dtkkx" label="Documents" path="~/Documents" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+        <filesystemType>basic</filesystemType>
+        <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <device id="7G62IJD-XDA6ULB-W4D5QFJ-IJSXWJF-QAEIJIV-NKWMDFG-IZOOTG6-WMNXJQS" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <minDiskFree unit="%">1</minDiskFree>
+        <versioning>
+            <cleanupIntervalS>3600</cleanupIntervalS>
+            <fsPath></fsPath>
+            <fsType>basic</fsType>
+        </versioning>
+        <copiers>0</copiers>
+        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
+        <hashers>0</hashers>
+        <order>random</order>
+        <ignoreDelete>false</ignoreDelete>
+        <scanProgressIntervalS>0</scanProgressIntervalS>
+        <pullerPauseS>0</pullerPauseS>
+        <maxConflicts>10</maxConflicts>
+        <disableSparseFiles>false</disableSparseFiles>
+        <disableTempIndexes>false</disableTempIndexes>
+        <paused>false</paused>
+        <weakHashThresholdPct>25</weakHashThresholdPct>
+        <markerName>.stfolder</markerName>
+        <copyOwnershipFromParent>false</copyOwnershipFromParent>
+        <modTimeWindowS>0</modTimeWindowS>
+        <maxConcurrentWrites>2</maxConcurrentWrites>
+        <disableFsync>false</disableFsync>
+        <blockPullOrder>standard</blockPullOrder>
+        <copyRangeMethod>standard</copyRangeMethod>
+        <caseSensitiveFS>false</caseSensitiveFS>
+        <junctionsAsDirs>false</junctionsAsDirs>
+        <syncOwnership>false</syncOwnership>
+        <sendOwnership>false</sendOwnership>
+        <syncXattrs>false</syncXattrs>
+        <sendXattrs>false</sendXattrs>
+        <xattrFilter>
+            <maxSingleEntrySize>1024</maxSingleEntrySize>
+            <maxTotalSize>4096</maxTotalSize>
+        </xattrFilter>
+    </folder>
+    <folder id="y0go4-3r55p" label="Music" path="~/Music" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+        <filesystemType>basic</filesystemType>
+        <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <device id="7G62IJD-XDA6ULB-W4D5QFJ-IJSXWJF-QAEIJIV-NKWMDFG-IZOOTG6-WMNXJQS" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <minDiskFree unit="%">1</minDiskFree>
+        <versioning>
+            <cleanupIntervalS>3600</cleanupIntervalS>
+            <fsPath></fsPath>
+            <fsType>basic</fsType>
+        </versioning>
+        <copiers>0</copiers>
+        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
+        <hashers>0</hashers>
+        <order>random</order>
+        <ignoreDelete>false</ignoreDelete>
+        <scanProgressIntervalS>0</scanProgressIntervalS>
+        <pullerPauseS>0</pullerPauseS>
+        <maxConflicts>10</maxConflicts>
+        <disableSparseFiles>false</disableSparseFiles>
+        <disableTempIndexes>false</disableTempIndexes>
+        <paused>false</paused>
+        <weakHashThresholdPct>25</weakHashThresholdPct>
+        <markerName>.stfolder</markerName>
+        <copyOwnershipFromParent>false</copyOwnershipFromParent>
+        <modTimeWindowS>0</modTimeWindowS>
+        <maxConcurrentWrites>2</maxConcurrentWrites>
+        <disableFsync>false</disableFsync>
+        <blockPullOrder>standard</blockPullOrder>
+        <copyRangeMethod>standard</copyRangeMethod>
+        <caseSensitiveFS>false</caseSensitiveFS>
+        <junctionsAsDirs>false</junctionsAsDirs>
+        <syncOwnership>false</syncOwnership>
+        <sendOwnership>false</sendOwnership>
+        <syncXattrs>false</syncXattrs>
+        <sendXattrs>false</sendXattrs>
+        <xattrFilter>
+            <maxSingleEntrySize>1024</maxSingleEntrySize>
+            <maxTotalSize>4096</maxTotalSize>
+        </xattrFilter>
+    </folder>
+    <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" name="pranav-Inspiron-3576" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
         <address>dynamic</address>
         <paused>false</paused>
         <autoAcceptFolders>false</autoAcceptFolders>
@@ -362,7 +362,7 @@
         <remoteGUIPort>0</remoteGUIPort>
         <numConnections>0</numConnections>
     </device>
-    <device id="2U5BLWB-G7SNDCA-KTFL2PO-MVUHQT5-QWZUJPF-HIQGU3U-MP26CWG-U4D2AAF" name="pranav-Inspiron-3576" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
+    <device id="7G62IJD-XDA6ULB-W4D5QFJ-IJSXWJF-QAEIJIV-NKWMDFG-IZOOTG6-WMNXJQS" name="pranav-IQOO_Z9s" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
         <address>dynamic</address>
         <paused>false</paused>
         <autoAcceptFolders>false</autoAcceptFolders>

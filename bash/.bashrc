@@ -194,3 +194,18 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 source ~/.bash_completion/alacritty
 # starship initialisation
 eval eval -- "$(/usr/local/bin/starship init bash --print-full-init)"
+
+# man syntax highlighting
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+set -o vi
+
+. "$HOME/.cargo/env"
+alias vim='nvim'
+HISTSIZE=5000
+HISTFILESIZE=10000
+
+export MANPAGER='nvim +Man!'
+
+# tealdeer auto-completion
+cp completion/bash_tealdeer /usr/share/bash-completion/completions/tldr
