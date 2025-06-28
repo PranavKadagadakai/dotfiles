@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/pranav/dotfiles/yazi'
 let g:netrw_dirhist_4='/home/pranav/Projects/Web_Dev'
 let g:netrw_dirhist_3='/home/pranav/Projects/Web_Dev/Belcakes-Shraddha_Naik'
 let g:netrw_dirhist_2='/tmp/systemd-private-c1f2fd0f23ef4cffbdfc71901678d9db-ModemManager.service-fXh152'

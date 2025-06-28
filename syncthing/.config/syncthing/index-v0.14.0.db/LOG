@@ -10677,3 +10677,8 @@
 23:10:02.262469 db@janitor F·11 G·1
 23:10:02.262502 db@janitor removing table-2999
 23:10:02.262625 db@open done T·41.901569ms
+23:32:05.812514 table@compaction L0·1 -> L1·1 S·2MiB Q·1251466
+23:32:05.918118 table@build created L1@3012 N·22725 S·2MiB "\x02\x00\x00..m4a,v806323":"\rhM..\xe1\xf4\x1e,v5530"
+23:32:05.918179 version@stat F·[0 7] S·12MiB[0B 12MiB] Sc·[0.00 0.12]
+23:32:05.919871 table@compaction committed F-1 S-419B Ke·0 D·19 T·107.256045ms
+23:32:05.920504 table@remove removed @3006
