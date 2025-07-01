@@ -157,17 +157,8 @@ HISTFILESIZE=10000
 
 export MANPAGER='nvim +Man!'
 
-# android-sdk add to path
-# export PATH=$PATH:/usr/lib/android-sdk/tools/bin
-export ANDROID_SDK_ROOT=~/Applications/android-sdk
-export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
-
 # Software rendering for Matlab
 export MATLAB_FORCE_SOFTWARE_OPENGL=1
-
-# Flutter add to path
-export PATH=$PATH:~/Applications/flutter/bin
 
 # Node Version Manager setup
 export NVM_DIR="$HOME/.nvm"
