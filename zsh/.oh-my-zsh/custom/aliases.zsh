@@ -19,8 +19,8 @@ alias mv="mv -vi"
 alias cpv='rsync -avh --info=progress2'
 
 # Some more handfull aliases
-alias bashrc="nano ~/.bashrc"
-alias zshrc="nano ~/.zshrc"
+alias bashrc="nvim ~/.bashrc"
+alias zshrc="nvim ~/.zshrc"
 alias update="sudo -- sh -c 'apt-get update; apt-get upgrade -y; apt-get dist-upgrade -y; apt-get autoremove -y; apt-get autoclean -y;'"
 alias cl="clear"
 alias vi="vim"
