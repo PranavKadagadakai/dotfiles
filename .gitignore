@@ -1,2 +1,4 @@
 libreoffice/.config/libreoffice/*/cache/
 syncthing/.config/syncthing/index-v*.db/
+.vscode
+.env
