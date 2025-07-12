@@ -2,3 +2,5 @@ libreoffice/.config/libreoffice/*/cache/
 syncthing/.config/syncthing/index-v*.db/
 .vscode
 **/.env
+libreoffice/.config/libreoffice/4/user/backup/
+syncthing/.config/syncthing/index-v0.14.0.db/
