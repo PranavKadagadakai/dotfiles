@@ -21,9 +21,11 @@ alias cpv='rsync -avh --info=progress2'
 # Some more handfull aliases
 alias bashrc="nvim ~/.bashrc"
 alias zshrc="nvim ~/.zshrc"
-alias update="sudo -- sh -c 'apt-get update; apt-get upgrade -y; apt-get dist-upgrade -y; apt-get autoremove -y; apt-get autoclean -y;'"
 alias cl="clear"
 alias vi="vim"
+alias src="source"
+alias srczsh="source ~/.zshrc"
+alias srcpyvenv="source ./.venv/bin/activate"
 
 # Fabric aliases
 # Loop through all files in the ~/.config/fabric/patterns directory
@@ -57,3 +59,30 @@ yt() {
 # Terminal clipboard commands
 alias pbcopy="xsel --input --clipboard"
 alias pbpaste="xsel --output --clipboard"
+
+# Unset update alias (if it exists) before defining the function
+unalias update 2>/dev/null
+
+# System update function 
+update() {
+  echo "=== APT packages ==="
+  sudo apt-get update
+  sudo apt-get upgrade -y
+  sudo apt-get dist-upgrade -y
+  sudo apt-get autoremove -y
+  sudo apt-get autoclean -y
+
+  if command -v flatpak >/dev/null 2>&1; then
+    echo "=== Flatpak apps ==="
+    flatpak update -y
+    flatpak uninstall --unused -y
+  fi
+
+  if command -v brew >/dev/null 2>&1; then
+    echo "=== Homebrew formulae ==="
+    brew update
+    brew upgrade
+    brew cleanup
+  fi
+}
+
