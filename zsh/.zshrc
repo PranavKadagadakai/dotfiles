@@ -112,7 +112,7 @@ export PATH=$PATH:$HOME/.local/bin
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.json)"
 
 # Installed Packages' Backup
-dpkg --get-selections > ~/Backups/package_list.list
+dpkg --get-selections > ~/Backups/packages.txt
 
 # Set up fzf key bindings and fuzzy completion
 source /usr/share/doc/fzf/examples/key-bindings.zsh
@@ -158,7 +158,7 @@ HISTFILESIZE=10000
 export MANPAGER='nvim +Man!'
 
 # Software rendering for Matlab
-export MATLAB_FORCE_SOFTWARE_OPENGL=1
+# export MATLAB_FORCE_SOFTWARE_OPENGL=1
 
 # Node Version Manager setup
 export NVM_DIR="$HOME/.nvm"
@@ -167,3 +167,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Zoxide init
 eval "$(zoxide init zsh)"
+
+# Set Locale for btop
+export LC_ALL=en_IN.UTF-8
+export LANG=en_IN.UTF-8

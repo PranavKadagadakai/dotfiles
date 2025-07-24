@@ -1,4 +1,5 @@
 # Change Dirs
+alias cd="z"
 alias ..="z .."
 alias cd..="z .."
 alias ...="z ../../"
