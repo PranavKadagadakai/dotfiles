@@ -119,20 +119,16 @@ source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
 # fzf theme config
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
---color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
---color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
---color=selected-bg:#45475A \
---color=border:#313244,label:#CDD6F4"
-
-# pyenv configs
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+FZF_THEME=$(cat <<EOF
+--color=fg:#CDD6F4,bg:#1E1E2E,hl:#F38BA8,\
+fg+:#CDD6F4,bg+:#45475A,hl+:#F38BA8,\
+info:#CBA6F7,prompt:#CBA6F7,pointer:#F5E0DC,\
+marker:#B4BEFE,spinner:#F5E0DC,header:#F38BA8,\
+border:#313244,label:#CDD6F4
+EOF
+)
+export FZF_DEFAULT_OPTS="$FZF_THEME"
+export COLORTERM=truecolor
 
 # Homebrew config
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -171,3 +167,8 @@ eval "$(zoxide init zsh)"
 # Set Locale for btop
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8
+
+# pyenv configs
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
