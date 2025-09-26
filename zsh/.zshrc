@@ -28,7 +28,7 @@ CATPPUCCIN_SHOW_TIME=true # Optional! If set to true, this will add the current 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13
@@ -65,7 +65,7 @@ CATPPUCCIN_SHOW_TIME=true # Optional! If set to true, this will add the current 
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM="$HOME/.custom-zsh/custom"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -97,7 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
 # users are encouraged to define aliases within a top-level file in
 # the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
+$ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
@@ -107,6 +107,9 @@ source $ZSH/oh-my-zsh.sh
 
 ## USER ADDED CUSTOM COMMANDS
 
+# Homebrew config
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # config oh-my-posh
 export PATH=$PATH:$HOME/.local/bin
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.json)"
@@ -115,8 +118,10 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.json)"
 dpkg --get-selections > ~/Backups/packages.txt
 
 # Set up fzf key bindings and fuzzy completion
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+source "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh"
+source "$(brew --prefix)/opt/fzf/shell/completion.zsh"
+#source /usr/share/doc/fzf/examples/key-bindings.zsh
+#source /usr/share/doc/fzf/examples/completion.zsh
 
 # fzf theme config
 FZF_THEME=$(cat <<EOF
@@ -129,9 +134,6 @@ EOF
 )
 export FZF_DEFAULT_OPTS="$FZF_THEME"
 export COLORTERM=truecolor
-
-# Homebrew config
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Tmuxifier config
 export PATH="$HOME/.tmuxifier/bin:$PATH"
@@ -172,3 +174,6 @@ export LANG=en_IN.UTF-8
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# XDG Runtime Dir config
+export XDG_RUNTIME_DIR=/run/user/$(id -u)

@@ -27,6 +27,7 @@ alias vi="vim"
 alias src="source"
 alias srczsh="source ~/.zshrc"
 alias srcpyvenv="source ./.venv/bin/activate"
+alias bat="batcat"
 
 # Fabric aliases
 # Loop through all files in the ~/.config/fabric/patterns directory
@@ -85,5 +86,10 @@ update() {
     brew upgrade
     brew cleanup
   fi
+}
+
+# Full clear with scrollback buffer deletion
+fcl() {
+  clear && printf '\e[3J'
 }
 
