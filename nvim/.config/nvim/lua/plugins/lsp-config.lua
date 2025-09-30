@@ -10,44 +10,51 @@ return {
     "williamboman/mason-lspconfig.nvim",
     lazy = false,
     opts = {
-      auto_install = true,
+      ensure_installed = {
+        "tailwindcss",
+        "jsonls",
+        "bashls",
+        "yamlls",
+        "solargraph",
+        "html",
+        "lua_ls",
+      },
+      automatic_installation = true, -- auto-install missing servers
     },
   },
   {
     "neovim/nvim-lspconfig",
     lazy = false,
     config = function()
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      local lspconfig = require("lspconfig")
-      lspconfig.tailwindcss.setup({
-        capabilities = capabilities
-      })
-      lspconfig.jsonls.setup({
-        capabilities = capabilities
-      })
-      lspconfig.bashls.setup({
-        capabilities = capabilities
-      })
-      lspconfig.yamlls.setup({
-        capabilities = capabilities
-      })
-      lspconfig.solargraph.setup({
-        capabilities = capabilities
-      })
-      lspconfig.html.setup({
-        capabilities = capabilities
-      })
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities
-      })
+      -- list of servers to enable
+      local servers = {
+        "tailwindcss",
+        "jsonls",
+        "bashls",
+        "yamlls",
+        "solargraph",
+        "html",
+        "lua_ls",
+      }
 
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.code_action, {})
-      vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, {})
+      -- configure each server
+      for _, server in ipairs(servers) do
+        vim.lsp.config[server] = {
+          capabilities = capabilities,
+        }
+        vim.lsp.start(vim.lsp.config[server])
+      end
+
+      -- global keymaps
+      local opts = { noremap = true, silent = true }
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
+      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
     end,
   },
 }
+

@@ -177,3 +177,7 @@ eval "$(pyenv init -)"
 
 # XDG Runtime Dir config
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
+# Mason bin path for LSP for nvim
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+
