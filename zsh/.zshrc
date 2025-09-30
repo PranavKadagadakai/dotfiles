@@ -114,9 +114,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH=$PATH:$HOME/.local/bin
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.json)"
 
-# Installed Packages' Backup
-dpkg --get-selections > ~/Backups/packages.txt
-
 # Set up fzf key bindings and fuzzy completion
 source "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh"
 source "$(brew --prefix)/opt/fzf/shell/completion.zsh"

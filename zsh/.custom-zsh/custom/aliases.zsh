@@ -29,6 +29,9 @@ alias srczsh="source ~/.zshrc"
 alias srcpyvenv="source ./.venv/bin/activate"
 alias bat="batcat"
 
+# Backup installed packages and apps
+alias backup-packages="bash ~/.scripts/backup-packages.sh"
+
 # Fabric aliases
 # Loop through all files in the ~/.config/fabric/patterns directory
 for pattern_file in $HOME/.config/fabric/patterns/*; do
