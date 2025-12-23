@@ -186,3 +186,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# opencode
+export PATH=/home/lazypanda69/.opencode/bin:$PATH
+export LIBVIRT_DEFAULT_URI='qemu:///system'
