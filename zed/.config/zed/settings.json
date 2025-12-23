@@ -1,0 +1,52 @@
+{
+  "languages": { "Java": { "show_edit_predictions": true } },
+  "minimap": { "show": "always" },
+  "vim_mode": false,
+  "context_servers": {
+    "MCP_DOCKER": {
+      "env": {},
+      "enabled": true,
+      "command": "docker",
+      "args": ["mcp", "gateway", "run"],
+    },
+  },
+  "edit_predictions": { "mode": "eager" },
+  "agent": {
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "openrouter",
+      "model": "qwen/qwen3-coder:free",
+    },
+    "inline_assistant_model": {
+      "provider": "openrouter",
+      "model": "nex-agi/deepseek-v3.1-nex-n1:free",
+    },
+    "inline_alternatives": [
+      { "provider": "openrouter", "model": "qwen/qwen3-coder:free" },
+    ],
+    "model_parameters": [
+      {
+        "provider": "openrouter",
+        "model": "tngtech/deepseek-r1t2-chimera:free",
+        "temperature": 0.4,
+      },
+      {
+        "provider": "openrouter",
+        "model": "qwen/qwen3-coder:free",
+        "temperature": 0.1,
+      },
+    ],
+  },
+  "telemetry": { "diagnostics": false, "metrics": false },
+  "terminal": { "cursor_shape": "bar", "blinking": "on" },
+  "auto_indent_on_paste": true,
+  "base_keymap": "VSCode",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Catppuccin Mocha",
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": { "mode": "dark", "light": "One Light", "dark": "Catppuccin Mocha" },
+}
