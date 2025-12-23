@@ -15,3 +15,5 @@
 	defaultBranch = main
 [http]
 	postBuffer = 524288000
+[push]
+	autoSetupRemote = true
