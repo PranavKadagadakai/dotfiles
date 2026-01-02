@@ -31,5 +31,5 @@ then use GNU stow to create symlinks
 
 ```
 cd ~/dotfiles
-stow alacritty bash btop fastfetch fabric git ghostty hyprland hyprlock hyprmocha hyprpaper i3 kitty libreoffice nvim ohmyposh picom polybar rofi screenlayout starship tmux vim waybar wofi xresources yazi zellij zsh
+stow alacritty bash btop fastfetch fabric git ghostty hyprland hyprlock hyprmocha hyprpaper i3 kitty libreoffice nvim ohmyposh picom polybar rofi screenlayout starship tmux vim vscode waybar wofi xresources yazi zellij zed zsh
 ```
