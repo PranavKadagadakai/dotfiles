@@ -1,0 +1,6 @@
+VITE_AWS_REGION=us-east-1 // Replace with your region
+VITE_AWS_USER_POOL_ID=us-east-1_XXXXXXXXX // Replace with your UserPoolId
+VITE_AWS_USER_POOL_CLIENT_ID=XXXXXXXXXXXXXXXXXXXXXXXXXX // Replace with UserPoolClientId
+VITE_AWS_IDENTITY_POOL_ID=us-east-1:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx // Replace with IdentityPoolId
+VITE_AWS_API_URL=https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod // Replace with ApiUrl
+VITE_AWS_S3_BUCKET=securefile-vault-XXXXXXXXXXXX-us-east-1 // Replace with your S3 bucket name

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 5px 5px 0 0; text-align: center; }
+        .content { background: #f9f9f9; padding: 20px; border: 1px solid #ddd; }
+        .button { display: inline-block; background: #667eea; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; margin: 20px 0; }
+        .button:hover { background: #764ba2; }
+        .footer { background: #333; color: white; padding: 10px; text-align: center; font-size: 12px; }
+        .token-box { background: #e8f4f8; padding: 15px; border-left: 4px solid #667eea; margin: 20px 0; }
+        .token-code { font-family: monospace; font-size: 14px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CertifyTrack</h1>
+            <p>Verify Your Email Address</p>
+        </div>
+        
+        <div class="content">
+            <p>Hi {{ user_name }},</p>
+            
+            <p>Thank you for registering with CertifyTrack! To complete your signup and activate your account, please verify your email address by clicking the button below:</p>
+            
+            <center>
+                <a href="{{ verification_url }}" class="button">Verify Email Address</a>
+            </center>
+            
+            <p>Or copy and paste this link in your browser:</p>
+            <p><small>{{ verification_url }}</small></p>
+            
+            <div class="token-box">
+                <p><strong>If the link doesn't work, use this verification code:</strong></p>
+                <p class="token-code">{{ token }}</p>
+            </div>
+            
+            <p><strong>This verification link will expire in 7 days.</strong></p>
+            
+            <p>If you didn't create this account, you can safely ignore this email.</p>
+            
+            <p>Best regards,<br>The CertifyTrack Team</p>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 CertifyTrack. All rights reserved.</p>
+            <p>Contact: support@certifytrack.com</p>
+        </div>
+    </div>
+</body>
+</html>

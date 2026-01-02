@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* You can add custom styles below */
+* {
+  @apply transition-colors duration-300;
+}

@@ -1,0 +1,48 @@
+Ref : #2.3
+    StorageStack
+    StorageStack: deploying... [2/3]
+
+    ✅  StorageStack (no changes)
+
+    ✨  Deployment time: 3.46s
+
+    Outputs:
+    StorageStack.FilesBucketName = securefile-vault-930664225363-us-east-1
+    StorageStack.ThumbnailsBucketName = securefile-vault-thumbnails-930664225363
+    Stack ARN:
+    arn:aws:cloudformation:us-east-1:930664225363:stack/StorageStack/5f62c1a0-a201-11f0-9477-0affdd64c637
+
+    ✨  Total time: 4.53s
+
+    DatabaseStack
+    DatabaseStack: deploying... [3/3]
+
+    ✅  DatabaseStack (no changes)
+
+    ✨  Deployment time: 3.48s
+
+    Outputs:
+    DatabaseStack.FilesTableName = SecureFileVault-Files
+    DatabaseStack.UsersTableName = SecureFileVault-Users
+    Stack ARN:
+    arn:aws:cloudformation:us-east-1:930664225363:stack/DatabaseStack/2b8c08f0-a201-11f0-85b3-1231049c1733
+
+    ✨  Total time: 4.55s
+
+Ref : #3.3
+    AuthStack: deploying... [1/1]
+    AuthStack: creating CloudFormation changeset...
+
+    ✅  AuthStack
+
+    ✨  Deployment time: 81.81s
+
+    Outputs:
+    AuthStack.IdentityPoolId = us-east-1:4dc87dd4-5bd3-49df-9d61-505d1cce6a8c
+    AuthStack.UserPoolClientId = 7r13nf1dnaug55jn30v2uisorm
+    AuthStack.UserPoolId = us-east-1_eb5Pc8VP2
+    Stack ARN:
+    arn:aws:cloudformation:us-east-1:930664225363:stack/AuthStack/076b4ec0-a203-11f0-bfdb-0affdef5eb2b
+
+    ✨  Total time: 82.93s
+

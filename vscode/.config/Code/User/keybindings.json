@@ -1,0 +1,15 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "ctrl+b ctrl+s",
+    "command": "workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "ctrl+alt+b",
+    "command": "-workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "ctrl+shift+s ctrl+shift+b",
+    "command": "workbench.action.focusAuxiliaryBar"
+  }
+]

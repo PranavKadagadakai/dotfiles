@@ -1,0 +1,901 @@
+[
+  {
+    "model": "api.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$OjQHi4Ja5gdfChzLX7zFEm$ytcjHuhQjkqtU5XCWfHi1i/4D6Bp3Dp8eaGw7LqxAmY=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "22u1421",
+      "first_name": "",
+      "last_name": "",
+      "email": "22u1421@students.git.edu",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-11-21T14:40:04.691Z",
+      "user_type": "student",
+      "is_email_verified": true,
+      "email_verification_token": null,
+      "verification_sent_at": null,
+      "password_reset_token": null,
+      "password_reset_expires": null,
+      "failed_login_attempts": 0,
+      "account_locked_until": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "api.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$3P0mPo2XYPNEQ3lcktcEoy$/xFoWv+7ZzEnM1mD0ZAbUJAOEwemZ5pcdbKXdAjFVVE=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "KKT",
+      "first_name": "Kiran K T",
+      "last_name": "",
+      "email": "kkt@git.edu",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-11-21T15:42:17.877Z",
+      "user_type": "mentor",
+      "is_email_verified": true,
+      "email_verification_token": null,
+      "verification_sent_at": null,
+      "password_reset_token": null,
+      "password_reset_expires": null,
+      "failed_login_attempts": 0,
+      "account_locked_until": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "api.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$eD0OuZot1P9DgPjyawO8LC$2UAIaBwoj5Q62WUU8Grh41gFUK30QGBDgYfbcbU8m+w=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "certifytrack",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2025-11-21T15:47:17.155Z",
+      "user_type": "admin",
+      "is_email_verified": true,
+      "email_verification_token": null,
+      "verification_sent_at": null,
+      "password_reset_token": null,
+      "password_reset_expires": null,
+      "failed_login_attempts": 0,
+      "account_locked_until": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "api.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$eJbrFFfQbX4vei4w6yq2IH$BPqlZbInhMgYTD/FDgjyahBMin8roUEye8uh496v9FQ=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "ACM",
+      "first_name": "ACM",
+      "last_name": "",
+      "email": "acm@git.edu",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-11-21T17:48:05.536Z",
+      "user_type": "club_organizer",
+      "is_email_verified": true,
+      "email_verification_token": null,
+      "verification_sent_at": null,
+      "password_reset_token": null,
+      "password_reset_expires": null,
+      "failed_login_attempts": 0,
+      "account_locked_until": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "api.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$DNEj17GDw1u24soyL7oSWq$POrLaehspB4vKTijMni6BOFYLoLdPRimCt5tNvZGr7Y=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "22u1428",
+      "first_name": "Shubham Mirashi",
+      "last_name": "",
+      "email": "22u1428@students.git.edu",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-11-23T13:03:23.453Z",
+      "user_type": "student",
+      "is_email_verified": true,
+      "email_verification_token": null,
+      "verification_sent_at": null,
+      "password_reset_token": null,
+      "password_reset_expires": null,
+      "failed_login_attempts": 0,
+      "account_locked_until": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "api.student",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "usn": "2GI22IS038",
+      "department": "ISE",
+      "semester": 7,
+      "phone_number": "8277720801",
+      "date_of_birth": "2005-02-28",
+      "address": null,
+      "profile_photo": "profile_photos/students/Formal_Profile_Picture.jpg",
+      "emergency_contact_name": null,
+      "emergency_contact_phone": null,
+      "profile_completed": false,
+      "profile_completed_at": null,
+      "mentor": 1
+    }
+  },
+  {
+    "model": "api.student",
+    "pk": 2,
+    "fields": {
+      "user": 5,
+      "usn": "2GI22IS054",
+      "department": "ISE",
+      "semester": 7,
+      "phone_number": null,
+      "date_of_birth": null,
+      "address": null,
+      "profile_photo": "",
+      "emergency_contact_name": null,
+      "emergency_contact_phone": null,
+      "profile_completed": false,
+      "profile_completed_at": null,
+      "mentor": 1
+    }
+  },
+  {
+    "model": "api.mentor",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "employee_id": "FAC001",
+      "department": "ISE",
+      "designation": "HOD",
+      "phone_number": null,
+      "date_of_birth": null,
+      "address": null,
+      "profile_photo": "",
+      "qualifications": null,
+      "bio": null,
+      "profile_completed": false,
+      "profile_completed_at": null
+    }
+  },
+  {
+    "model": "api.cluborganizer",
+    "pk": 1,
+    "fields": {
+      "user": 4,
+      "club": 1,
+      "phone_number": null,
+      "date_of_birth": null,
+      "address": null,
+      "profile_photo": "",
+      "designation_in_club": null,
+      "bio": null,
+      "profile_completed": false,
+      "profile_completed_at": null,
+      "created_at": "2025-11-21T17:48:06.076Z",
+      "updated_at": "2025-11-23T19:22:51.976Z"
+    }
+  },
+  {
+    "model": "api.club",
+    "pk": 1,
+    "fields": {
+      "name": "ACM",
+      "description": "ACM Club",
+      "faculty_coordinator": 1,
+      "club_head": 2,
+      "established_date": "2025-11-23",
+      "is_active": true,
+      "created_at": "2025-11-23T13:22:24.339Z",
+      "updated_at": "2025-11-23T19:22:09.800Z"
+    }
+  },
+  {
+    "model": "api.hall",
+    "pk": 1,
+    "fields": {
+      "name": "Auditorium A",
+      "code": "AUD-A",
+      "location": "Main Building, Ground Floor",
+      "capacity": 500,
+      "facilities": ["Projector", "Sound System", "Microphone", "Parking"],
+      "is_available": true
+    }
+  },
+  {
+    "model": "api.hall",
+    "pk": 2,
+    "fields": {
+      "name": "Seminar Hall 1",
+      "code": "SEM-1",
+      "location": "Main Building, First Floor",
+      "capacity": 100,
+      "facilities": ["Projector", "WiFi", "AC"],
+      "is_available": true
+    }
+  },
+  {
+    "model": "api.hall",
+    "pk": 3,
+    "fields": {
+      "name": "Seminar Hall 2",
+      "code": "SEM-2",
+      "location": "Main Building, Second Floor",
+      "capacity": 80,
+      "facilities": ["Projector", "WiFi", "AC"],
+      "is_available": true
+    }
+  },
+  {
+    "model": "api.hall",
+    "pk": 4,
+    "fields": {
+      "name": "Conference Room A",
+      "code": "CONF-A",
+      "location": "Admin Building, First Floor",
+      "capacity": 30,
+      "facilities": ["Video Conference", "WiFi", "AC"],
+      "is_available": true
+    }
+  },
+  {
+    "model": "api.hall",
+    "pk": 5,
+    "fields": {
+      "name": "Conference Room B",
+      "code": "CONF-B",
+      "location": "Admin Building, First Floor",
+      "capacity": 25,
+      "facilities": ["Video Conference", "WiFi", "AC"],
+      "is_available": true
+    }
+  },
+  {
+    "model": "api.hall",
+    "pk": 6,
+    "fields": {
+      "name": "Training Lab",
+      "code": "LAB-T",
+      "location": "IT Building, Ground Floor",
+      "capacity": 50,
+      "facilities": ["Computers", "Projector", "WiFi", "AC"],
+      "is_available": true
+    }
+  },
+  {
+    "model": "api.hall",
+    "pk": 7,
+    "fields": {
+      "name": "Sports Complex",
+      "code": "SPORTS",
+      "location": "Sports Ground",
+      "capacity": 1000,
+      "facilities": ["Outdoor Space", "Sound System", "Seating"],
+      "is_available": true
+    }
+  },
+  {
+    "model": "api.hall",
+    "pk": 8,
+    "fields": {
+      "name": "Cafeteria",
+      "code": "CAF-1",
+      "location": "Main Building, Ground Floor",
+      "capacity": 200,
+      "facilities": ["Catering", "Tables", "Chairs"],
+      "is_available": true
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "action": "User registered: 22u1421",
+      "timestamp": "2025-11-21T14:40:05.950Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "action": "Email verified",
+      "timestamp": "2025-11-21T14:41:09.034Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "action": "User logged in",
+      "timestamp": "2025-11-21T14:41:26.649Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 4,
+    "fields": {
+      "user": 1,
+      "action": "User logged in",
+      "timestamp": "2025-11-21T14:44:10.222Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 5,
+    "fields": {
+      "user": 1,
+      "action": "Password reset requested",
+      "timestamp": "2025-11-21T14:47:03.298Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 6,
+    "fields": {
+      "user": 1,
+      "action": "Password reset successfully",
+      "timestamp": "2025-11-21T14:47:42.541Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 7,
+    "fields": {
+      "user": 1,
+      "action": "Failed login attempt (1)",
+      "timestamp": "2025-11-21T14:47:56.028Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 8,
+    "fields": {
+      "user": 1,
+      "action": "User logged in",
+      "timestamp": "2025-11-21T14:48:03.383Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 9,
+    "fields": {
+      "user": 1,
+      "action": "User logged in",
+      "timestamp": "2025-11-21T14:53:07.647Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 10,
+    "fields": {
+      "user": 1,
+      "action": "User logged in",
+      "timestamp": "2025-11-21T14:55:51.747Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 11,
+    "fields": {
+      "user": 1,
+      "action": "User logged in",
+      "timestamp": "2025-11-21T15:29:50.085Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 12,
+    "fields": {
+      "user": 2,
+      "action": "User registered: KKT",
+      "timestamp": "2025-11-21T15:42:18.445Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 13,
+    "fields": {
+      "user": 2,
+      "action": "Email verified",
+      "timestamp": "2025-11-21T15:42:37.337Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 14,
+    "fields": {
+      "user": 2,
+      "action": "User logged in",
+      "timestamp": "2025-11-21T15:42:49.268Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 15,
+    "fields": {
+      "user": 2,
+      "action": "User logged in",
+      "timestamp": "2025-11-21T15:43:09.967Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 16,
+    "fields": {
+      "user": 3,
+      "action": "User logged in",
+      "timestamp": "2025-11-21T17:18:51.778Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 17,
+    "fields": {
+      "user": 3,
+      "action": "User logged in",
+      "timestamp": "2025-11-21T17:20:20.225Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 18,
+    "fields": {
+      "user": 3,
+      "action": "Enabled user account: certifytrack",
+      "timestamp": "2025-11-21T17:27:36.548Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 19,
+    "fields": {
+      "user": 2,
+      "action": "User logged in",
+      "timestamp": "2025-11-21T17:44:15.907Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 20,
+    "fields": {
+      "user": 3,
+      "action": "User logged in",
+      "timestamp": "2025-11-21T17:45:59.756Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 21,
+    "fields": {
+      "user": 4,
+      "action": "User registered: ACM",
+      "timestamp": "2025-11-21T17:48:06.086Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 22,
+    "fields": {
+      "user": 4,
+      "action": "Email verified",
+      "timestamp": "2025-11-21T17:48:21.048Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 23,
+    "fields": {
+      "user": 4,
+      "action": "User logged in",
+      "timestamp": "2025-11-21T17:48:33.428Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 24,
+    "fields": {
+      "user": 1,
+      "action": "Password reset requested",
+      "timestamp": "2025-11-22T18:25:05.569Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 25,
+    "fields": {
+      "user": 1,
+      "action": "Password reset successfully",
+      "timestamp": "2025-11-22T18:29:16.135Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 26,
+    "fields": {
+      "user": 1,
+      "action": "Password reset requested",
+      "timestamp": "2025-11-22T18:30:02.464Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 27,
+    "fields": {
+      "user": 1,
+      "action": "Password reset successfully",
+      "timestamp": "2025-11-22T18:30:39.559Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 28,
+    "fields": {
+      "user": 1,
+      "action": "Password reset requested",
+      "timestamp": "2025-11-22T18:37:02.667Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 29,
+    "fields": {
+      "user": 1,
+      "action": "Password reset successfully",
+      "timestamp": "2025-11-22T18:38:29.360Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 30,
+    "fields": {
+      "user": 1,
+      "action": "Password reset requested",
+      "timestamp": "2025-11-22T18:44:14.727Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 31,
+    "fields": {
+      "user": 1,
+      "action": "Password reset successfully",
+      "timestamp": "2025-11-22T18:44:57.622Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 32,
+    "fields": {
+      "user": 3,
+      "action": "User logged in",
+      "timestamp": "2025-11-22T18:45:27.713Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 33,
+    "fields": {
+      "user": 3,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T06:12:41.662Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 34,
+    "fields": {
+      "user": 3,
+      "action": "Assigned mentee 2GI22IS038 to mentor FAC001",
+      "timestamp": "2025-11-23T06:13:10.066Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 35,
+    "fields": {
+      "user": 1,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T06:13:29.881Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 36,
+    "fields": {
+      "user": 2,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T06:13:52.282Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 37,
+    "fields": {
+      "user": 3,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T06:16:03.397Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 38,
+    "fields": {
+      "user": 4,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T09:09:18.033Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 39,
+    "fields": {
+      "user": 4,
+      "action": "Requested hall booking for Seminar Hall 1",
+      "timestamp": "2025-11-23T09:12:59.046Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 40,
+    "fields": {
+      "user": 3,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T09:13:17.133Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 41,
+    "fields": {
+      "user": 5,
+      "action": "User registered: 22u1428",
+      "timestamp": "2025-11-23T13:03:34.247Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 42,
+    "fields": {
+      "user": 5,
+      "action": "Email verified",
+      "timestamp": "2025-11-23T13:09:08.175Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 43,
+    "fields": {
+      "user": 5,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T13:09:24.020Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 44,
+    "fields": {
+      "user": 3,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T13:09:59.673Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 45,
+    "fields": {
+      "user": 3,
+      "action": "Assigned mentee 2GI22IS038 to mentor FAC001",
+      "timestamp": "2025-11-23T13:12:18.552Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 46,
+    "fields": {
+      "user": 3,
+      "action": "Assigned mentee 2GI22IS054 to mentor FAC001",
+      "timestamp": "2025-11-23T13:12:18.583Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 47,
+    "fields": {
+      "user": 4,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T13:13:13.771Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 48,
+    "fields": {
+      "user": 2,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T13:14:20.712Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 49,
+    "fields": {
+      "user": 2,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T13:17:23.035Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 50,
+    "fields": {
+      "user": 4,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T13:18:14.340Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 51,
+    "fields": {
+      "user": 3,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T13:21:50.782Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 52,
+    "fields": {
+      "user": 3,
+      "action": "Created club: ACM",
+      "timestamp": "2025-11-23T13:22:24.364Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 53,
+    "fields": {
+      "user": 3,
+      "action": "Assigned 22u1421 as club head to club ACM",
+      "timestamp": "2025-11-23T13:22:34.908Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 54,
+    "fields": {
+      "user": 3,
+      "action": "Assigned 22u1428 as club head to club ACM",
+      "timestamp": "2025-11-23T13:22:53.875Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 55,
+    "fields": {
+      "user": 3,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T18:11:56.753Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 56,
+    "fields": {
+      "user": 4,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T18:13:34.060Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 57,
+    "fields": {
+      "user": 3,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T18:42:07.316Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 58,
+    "fields": {
+      "user": 3,
+      "action": "Assigned 22u1421 as club head to club ACM",
+      "timestamp": "2025-11-23T18:55:10.241Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 59,
+    "fields": {
+      "user": 3,
+      "action": "Assigned 22u1428 as club head to club ACM",
+      "timestamp": "2025-11-23T19:07:09.115Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 60,
+    "fields": {
+      "user": 3,
+      "action": "Changed coordinator of ACM to Kiran K T",
+      "timestamp": "2025-11-23T19:22:09.819Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 61,
+    "fields": {
+      "user": 3,
+      "action": "Assigned ACM to club ACM",
+      "timestamp": "2025-11-23T19:22:13.325Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 62,
+    "fields": {
+      "user": 3,
+      "action": "Assigned ACM to club ACM",
+      "timestamp": "2025-11-23T19:22:51.997Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 63,
+    "fields": {
+      "user": 4,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T19:26:50.362Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 64,
+    "fields": {
+      "user": 1,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T19:31:07.721Z"
+    }
+  },
+  {
+    "model": "api.auditlog",
+    "pk": 65,
+    "fields": {
+      "user": 1,
+      "action": "User logged in",
+      "timestamp": "2025-11-23T19:36:36.298Z"
+    }
+  }
+]

@@ -1,0 +1,310 @@
+pnpm exec cdk deploy --all # will deploy StorageStack, DatabaseStack, AuthStac
+[WARNING] aws-cdk-lib.aws_dynamodb.TableOptions#pointInTimeRecovery is depreca
+  use `pointInTimeRecoverySpecification` instead
+  This API will be removed in the next major release.
+[WARNING] aws-cdk-lib.aws_dynamodb.TableOptions#pointInTimeRecovery is depreca
+  use `pointInTimeRecoverySpecification` instead
+  This API will be removed in the next major release.
+Successfully synthesized to /home/lazypanda69/Projects/Web_Dev/File_Storing_An
+Supply a stack id (InfrastructureStack, StorageStack, DatabaseStack, AuthStack
+[WARNING] aws-cdk-lib.aws_dynamodb.TableOptions#pointInTimeRecovery is depreca
+  use `pointInTimeRecoverySpecification` instead
+  This API will be removed in the next major release.
+[WARNING] aws-cdk-lib.aws_dynamodb.TableOptions#pointInTimeRecovery is depreca
+  use `pointInTimeRecoverySpecification` instead
+  This API will be removed in the next major release.
+
+✨  Synthesis time: 2.01s
+
+InfrastructureStack
+LambdaStack: start: Building SharedLayer/Code
+LambdaStack: success: Built SharedLayer/Code
+LambdaStack: start: Building UploadFileFunction/Code
+LambdaStack: success: Built UploadFileFunction/Code
+LambdaStack: start: Building UploadCompleteFunction/Code
+LambdaStack: success: Built UploadCompleteFunction/Code
+LambdaStack: start: Building DownloadFileFunction/Code
+LambdaStack: success: Built DownloadFileFunction/Code
+LambdaStack: start: Building ListFilesFunction/Code
+LambdaStack: success: Built ListFilesFunction/Code
+LambdaStack: start: Building DeleteFileFunction/Code
+LambdaStack: success: Built DeleteFileFunction/Code
+LambdaStack: start: Building CreateShareLinkFunction/Code
+LambdaStack: success: Built CreateShareLinkFunction/Code
+LambdaStack: start: Building LambdaStack Template
+LambdaStack: success: Built LambdaStack Template
+InfrastructureStack: deploying... [1/5]
+
+ ✅  InfrastructureStack (no changes)
+
+✨  Deployment time: 4.78s
+
+Stack ARN:
+arn:aws:cloudformation:us-east-1:930664225363:stack/InfrastructureStack/717085
+
+✨  Total time: 6.79s
+
+StorageStack
+StorageStack: deploying... [2/5]
+
+ ✅  StorageStack (no changes)
+
+✨  Deployment time: 3.24s
+
+Outputs:
+StorageStack.ExportsOutputFnGetAttFileStorageBucket10E371B0Arn580F3D7A = arn:a
+StorageStack.ExportsOutputRefFileStorageBucket10E371B0C41BE18D = securefile-va
+StorageStack.FilesBucketName = securefile-vault-930664225363-us-east-1
+StorageStack.ThumbnailsBucketName = securefile-vault-thumbnails-930664225363
+Stack ARN:
+arn:aws:cloudformation:us-east-1:930664225363:stack/StorageStack/5f62c1a0-a201
+
+✨  Total time: 5.24s
+
+DatabaseStack
+DatabaseStack: deploying... [3/5]
+DatabaseStack: creating CloudFormation changeset...
+
+ ✅  DatabaseStack
+
+✨  Deployment time: 29.34s
+
+Outputs:
+DatabaseStack.ExportsOutputFnGetAttAccessLogsTable22612AD2Arn9356A2D9 = arn:aw
+DatabaseStack.ExportsOutputFnGetAttFilesTable1399FAA4Arn25DD9DF2 = arn:aws:dyn
+DatabaseStack.ExportsOutputFnGetAttShareLinksTableFD9EFE25ArnD2D819AE = arn:aw
+DatabaseStack.ExportsOutputFnGetAttUsersTable9725E9C8Arn5684EF99 = arn:aws:dyn
+DatabaseStack.ExportsOutputRefAccessLogsTable22612AD2E6DD90BA = SecureFileVaul
+DatabaseStack.ExportsOutputRefFilesTable1399FAA4592580B8 = SecureFileVault-Fil
+DatabaseStack.ExportsOutputRefShareLinksTableFD9EFE2521A37A30 = SecureFileVaul
+DatabaseStack.ExportsOutputRefUsersTable9725E9C857961836 = SecureFileVault-Use
+DatabaseStack.FilesTableName = SecureFileVault-Files
+DatabaseStack.UsersTableName = SecureFileVault-Users
+Stack ARN:
+arn:aws:cloudformation:us-east-1:930664225363:stack/DatabaseStack/2b8c08f0-a20
+
+✨  Total time: 31.34s
+
+AuthStack
+Stack AuthStack
+IAM Statement Changes
+┌───┬───────────────────────────────────┬────────┬────────────────────────────
+│   │ Resource                          │ Effect │ Action
+├───┼───────────────────────────────────┼────────┼────────────────────────────
+│ + │ ${CognitoAuthenticatedRole.Arn}   │ Allow  │ sts:AssumeRoleWithWebIdenti
+│   │                                   │        │
+│   │                                   │        │
+│   │                                   │        │
+│   │                                   │        │
+│   │                                   │        │
+├───┼───────────────────────────────────┼────────┼────────────────────────────
+│ + │ arn:aws:s3:::securefile-vault-*   │ Allow  │ s3:GetObject
+│   │ arn:aws:s3:::securefile-vault-*/* │        │ s3:ListBucket
+└───┴───────────────────────────────────┴────────┴────────────────────────────
+(NOTE: There may be security-related changes not in this list. See https://git
+
+
+ ✅  AuthStack
+
+✨  Deployment time: 64.37s
+
+Outputs:
+AuthStack.ExportsOutputFnGetAttUserPool6BA7E5F2Arn686ACC00 = arn:aws:cognito-i
+AuthStack.ExportsOutputRefUserPool6BA7E5F296FD7236 = us-east-1_lojWVqTFh
+AuthStack.UserPoolClientId = 1ialh0scfva1onf1i4725nudon
+AuthStack.UserPoolId = us-east-1_lojWVqTFh
+Stack ARN:
+arn:aws:cloudformation:us-east-1:930664225363:stack/AuthStack/3e24c1c0-a213-11
+
+✨  Total time: 66.38s
+
+LambdaStack: start: Publishing UploadCompleteFunction/Code (current_account-cu
+LambdaStack: start: Publishing UploadFileFunction/Code (current_account-curren
+LambdaStack: start: Publishing SharedLayer/Code (current_account-current_regio
+LambdaStack: start: Publishing DownloadFileFunction/Code (current_account-curr
+LambdaStack: start: Publishing ListFilesFunction/Code (current_account-current
+LambdaStack: start: Publishing CreateShareLinkFunction/Code (current_account-c
+LambdaStack: start: Publishing LambdaStack Template (current_account-current_r
+LambdaStack: start: Publishing DeleteFileFunction/Code (current_account-curren
+LambdaStack: success: Published UploadCompleteFunction/Code (current_account-c
+LambdaStack: success: Published DeleteFileFunction/Code (current_account-curre
+LambdaStack: success: Published UploadFileFunction/Code (current_account-curre
+LambdaStack: success: Published DownloadFileFunction/Code (current_account-cur
+LambdaStack: success: Published ListFilesFunction/Code (current_account-curren
+LambdaStack: success: Published CreateShareLinkFunction/Code (current_account-
+LambdaStack: success: Published LambdaStack Template (current_account-current_
+LambdaStack: success: Published SharedLayer/Code (current_account-current_regi
+LambdaStack
+Stack LambdaStack
+IAM Statement Changes
+┌───┬─────────────────────────────────────────────────────────────────────────
+│   │ Resource
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ ${CreateShareLinkFunction/ServiceRole.Arn}
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ ${DeleteFileFunction.Arn}
+│   │
+│   │
+│ + │ ${DeleteFileFunction.Arn}
+│   │
+│   │
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ ${DeleteFileFunction/ServiceRole.Arn}
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ ${DownloadFileFunction.Arn}
+│   │
+│   │
+│ + │ ${DownloadFileFunction.Arn}
+│   │
+│   │
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ ${DownloadFileFunction/ServiceRole.Arn}
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ ${ListFilesFunction.Arn}
+│   │
+│   │
+│ + │ ${ListFilesFunction.Arn}
+│   │
+│   │
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ ${ListFilesFunction/ServiceRole.Arn}
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ ${UploadCompleteFunction.Arn}
+│   │
+│   │
+│ + │ ${UploadCompleteFunction.Arn}
+│   │
+│   │
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ ${UploadCompleteFunction/ServiceRole.Arn}
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ ${UploadFileFunction.Arn}
+│   │
+│   │
+│ + │ ${UploadFileFunction.Arn}
+│   │
+│   │
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ ${UploadFileFunction/ServiceRole.Arn}
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttAccessLogsTable22
+│   │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttAccessLogsTable22
+│   │
+│   │
+│   │
+│ + │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttAccessLogsTable22
+│   │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttAccessLogsTable22
+│   │
+│   │
+│   │
+│ + │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttAccessLogsTable22
+│   │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttAccessLogsTable22
+│   │
+│   │
+│   │
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttFilesTable1399FAA
+│   │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttFilesTable1399FAA
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+│ + │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttFilesTable1399FAA
+│   │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttFilesTable1399FAA
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+│ + │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttFilesTable1399FAA
+│   │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttFilesTable1399FAA
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttFilesTable1399FAA
+│   │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttFilesTable1399FAA
+│   │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttUsersTable9725E9C
+│   │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttUsersTable9725E9C
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+│ + │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttFilesTable1399FAA
+│   │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttFilesTable1399FAA
+│   │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttUsersTable9725E9C
+│   │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttUsersTable9725E9C
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttShareLinksTableFD
+│   │ {"Fn::ImportValue":"DatabaseStack:ExportsOutputFnGetAttShareLinksTableFD
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ {"Fn::ImportValue":"StorageStack:ExportsOutputFnGetAttFileStorageBucket1
+│   │ {"Fn::ImportValue":"StorageStack:ExportsOutputFnGetAttFileStorageBucket1
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+│   │
+│ + │ {"Fn::ImportValue":"StorageStack:ExportsOutputFnGetAttFileStorageBucket1
+│   │ {"Fn::ImportValue":"StorageStack:ExportsOutputFnGetAttFileStorageBucket1
+│   │
+│ + │ {"Fn::ImportValue":"StorageStack:ExportsOutputFnGetAttFileStorageBucket1
+│   │ {"Fn::ImportValue":"StorageStack:ExportsOutputFnGetAttFileStorageBucket1
+│   │
+│ + │ {"Fn::ImportValue":"StorageStack:ExportsOutputFnGetAttFileStorageBucket1
+│   │ {"Fn::ImportValue":"StorageStack:ExportsOutputFnGetAttFileStorageBucket1
+│   │
+├───┼─────────────────────────────────────────────────────────────────────────
+│ + │ {"Fn::ImportValue":"StorageStack:ExportsOutputFnGetAttFileStorageBucket1
+└───┴─────────────────────────────────────────────────────────────────────────
+IAM Policy Changes
+┌───┬────────────────────────────────────────┬────────────────────────────────
+│   │ Resource                               │ Managed Policy ARN
+├───┼────────────────────────────────────────┼────────────────────────────────
+│ + │ ${CreateShareLinkFunction/ServiceRole} │ arn:${AWS::Partition}:iam::aws:
+├───┼────────────────────────────────────────┼────────────────────────────────
+│ + │ ${DeleteFileFunction/ServiceRole}      │ arn:${AWS::Partition}:iam::aws:
+├───┼────────────────────────────────────────┼────────────────────────────────
+│ + │ ${DownloadFileFunction/ServiceRole}    │ arn:${AWS::Partition}:iam::aws:
+├───┼────────────────────────────────────────┼────────────────────────────────
+│ + │ ${ListFilesFunction/ServiceRole}       │ arn:${AWS::Partition}:iam::aws:
+├───┼────────────────────────────────────────┼────────────────────────────────
+│ + │ ${UploadCompleteFunction/ServiceRole}  │ arn:${AWS::Partition}:iam::aws:
+ ✅  LambdaStack
+✨  Deployment time: 76.74s
+Outputs:                                                                      LambdaStack.ApiUrl = https://q4cjbw30a5.execute-api.us-east-1.amazonaws.com/prod/                                                                           LambdaStack.FileStorageAPIEndpoint07F96AD4 = https://q4cjbw30a5.execute-api.us-east-1.amazonaws.com/prod/
+Stack ARN:
+arn:aws:cloudformation:us-east-1:930664225363:stack/LambdaStack/9425f800-a213-11f0-925c-12f4769e453b
+
+✨  Total time: 78.74s

@@ -1,0 +1,11 @@
+{
+  "name": "shared-layer",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "aws-sdk": "^2.1360.0",
+    "uuid": "^9.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "bcryptjs": "^2.4.3"
+  }
+}

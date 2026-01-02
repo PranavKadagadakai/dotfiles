@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* You can add custom styles below */
+* {
+  @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white;
+  @apply transition-colors duration-300;
+}

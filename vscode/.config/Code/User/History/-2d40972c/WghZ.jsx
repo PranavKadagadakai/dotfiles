@@ -1,0 +1,121 @@
+import { useState } from "react";
+import api from "../services/api";
+import { useNavigate } from "react-router-dom";
+
+export default function AddBookPage() {
+  const [form, setForm] = useState({
+    title: "",
+    author: "",
+    description: "",
+    genre: "",
+    year: "",
+  });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const validate = () => {
+    if (!form.title) return "Title is required";
+    if (!form.author) return "Author is required";
+    if (!form.description || form.description.length < 10)
+      return "Description must be at least 10 characters";
+    if (!form.genre) return "Genre is required";
+    if (!form.year || isNaN(form.year) || form.year < 1000 || form.year > 2025)
+      return "Year must be between 1000 and 2025";
+    return "";
+  };
+
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const v = validate();
+    if (v) return setError(v);
+    setError("");
+    setLoading(true);
+    try {
+      await api.post("/books", { ...form, year: Number(form.year) });
+      navigate("/");
+    } catch (err) {
+      setError(err.response?.data?.error || "Failed to add book");
+    }
+    setLoading(false);
+  };
+
+  return (
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded shadow">
+      <h2 className="text-2xl mb-4 font-bold dark:text-white">Add Book</h2>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <input
+          name="title"
+          placeholder="Title"
+          value={form.title}
+          onChange={handleChange}
+          required
+          className="border border-gray-300 dark:border-gray-600 p-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-blue-500 focus:border-blue-500"
+        />
+        <input
+          name="author"
+          placeholder="Author"
+          value={form.author}
+          onChange={handleChange}
+          required
+          className="border border-gray-300 dark:border-gray-600 p-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-blue-500 focus:border-blue-500"
+        />
+        <textarea
+          name="description"
+          placeholder="Description"
+          value={form.description}
+          onChange={handleChange}
+          required
+          className="border border-gray-300 dark:border-gray-600 p-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-blue-500 focus:border-blue-500"
+        />
+        <input
+          name="genre"
+          placeholder="Genre"
+          value={form.genre}
+          onChange={handleChange}
+          required
+          className="border border-gray-300 dark:border-gray-600 p-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-blue-500 focus:border-blue-500"
+        />
+        <select
+          name="year"
+          value={form.year}
+          onChange={handleChange}
+          required
+          className="border border-gray-300 dark:border-gray-600 p-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-blue-500 focus:border-blue-500"
+        >
+          <option value="" disabled>
+            Published Year
+          </option>
+          {/* FIX: Added key={y} to the option element */}
+          {Array.from({ length: 2025 - 1000 + 1 }, (_, i) => 2025 - i).map(
+            (y) => (
+              <option key={y} value={y}>
+                {y}
+              </option>
+            )
+          )}
+        </select>
+        <div className="flex gap-2">
+          <button
+            type="submit"
+            className="bg-blue-600 text-white p-2 rounded"
+            disabled={loading}
+          >
+            {loading ? "Adding..." : "Add Book"}
+          </button>
+          <button
+            type="button"
+            className="bg-gray-400 text-white p-2 rounded"
+            onClick={() => navigate(-1)}
+          >
+            Cancel
+          </button>
+        </div>
+        {error && <div className="text-red-600">{error}</div>}
+      </form>
+    </div>
+  );
+}

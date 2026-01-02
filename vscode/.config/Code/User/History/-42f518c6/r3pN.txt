@@ -1,0 +1,158 @@
+[
+    {
+        "OutputKey": "ExportsOutputFnGetAttUserPool6BA7E5F2Arn686ACC00",
+        "OutputValue": "arn:aws:cognito-idp:us-east-1:930664225363:userpool/us-east-1_lojWVqTFh",
+        "ExportName": "AuthStack:ExportsOutputFnGetAttUserPool6BA7E5F2Arn686ACC00"
+    },
+    {
+        "OutputKey": "UserPoolClientId",
+        "OutputValue": "1ialh0scfva1onf1i4725nudon",
+        "ExportName": "UserPoolClientId"
+    },
+    {
+        "OutputKey": "UserPoolId",
+        "OutputValue": "us-east-1_lojWVqTFh",
+        "ExportName": "UserPoolId"
+    },
+    {
+        "OutputKey": "ExportsOutputRefUserPool6BA7E5F296FD7236",
+        "OutputValue": "us-east-1_lojWVqTFh",
+        "ExportName": "AuthStack:ExportsOutputRefUserPool6BA7E5F296FD7236"
+    }
+]
+
+
+[
+    {
+        "OutputKey": "ApiUrl",
+        "OutputValue": "https://q4cjbw30a5.execute-api.us-east-1.amazonaws.com/prod/",
+        "ExportName": "ApiUrl"
+    },
+    {
+        "OutputKey": "FileStorageAPIEndpoint07F96AD4",
+        "OutputValue": "https://q4cjbw30a5.execute-api.us-east-1.amazonaws.com/prod/"
+    }
+]
+
+
+[
+    {
+        "OutputKey": "ExportsOutputFnGetAttFileStorageBucket10E371B0Arn580F3D7A",
+        "OutputValue": "arn:aws:s3:::securefile-vault-930664225363-us-east-1",
+        "ExportName": "StorageStack:ExportsOutputFnGetAttFileStorageBucket10E371B0Arn580F3D7A"
+    },
+    {
+        "OutputKey": "ThumbnailsBucketName",
+        "OutputValue": "securefile-vault-thumbnails-930664225363",
+        "ExportName": "ThumbnailsBucketName"
+    },
+    {
+        "OutputKey": "FilesBucketName",
+        "OutputValue": "securefile-vault-930664225363-us-east-1",
+        "ExportName": "FilesBucketName"
+    },
+    {
+        "OutputKey": "ExportsOutputRefFileStorageBucket10E371B0C41BE18D",
+        "OutputValue": "securefile-vault-930664225363-us-east-1",
+        "ExportName": "StorageStack:ExportsOutputRefFileStorageBucket10E371B0C41BE18D"
+    }
+]
+
+
+
+
+pnpm exec cdk synth
+Successfully synthesized to /home/lazypanda69/Projects/Web_Dev/File_Storing_An
+Supply a stack id (InfrastructureStack, StorageStack, DatabaseStack, AuthStack
+
+✨  Synthesis time: 1.97s
+
+InfrastructureStack
+DatabaseStack: start: Building DatabaseStack Template
+DatabaseStack: success: Built DatabaseStack Template
+DatabaseStack: start: Publishing DatabaseStack Template (current_account-curre
+InfrastructureStack: deploying... [1/5]
+
+ ✅  InfrastructureStack (no changes)
+
+✨  Deployment time: 4.01s
+
+Stack ARN:
+arn:aws:cloudformation:us-east-1:930664225363:stack/InfrastructureStack/717085
+
+✨  Total time: 5.99s
+
+StorageStack
+StorageStack: deploying... [2/5]
+
+ ✅  StorageStack (no changes)
+
+✨  Deployment time: 2.63s
+
+Outputs:
+StorageStack.ExportsOutputFnGetAttFileStorageBucket10E371B0Arn580F3D7A = arn:a
+StorageStack.ExportsOutputRefFileStorageBucket10E371B0C41BE18D = securefile-va
+StorageStack.FilesBucketName = securefile-vault-930664225363-us-east-1
+StorageStack.ThumbnailsBucketName = securefile-vault-thumbnails-930664225363
+Stack ARN:
+arn:aws:cloudformation:us-east-1:930664225363:stack/StorageStack/5f62c1a0-a201
+
+✨  Total time: 4.61s
+
+AuthStack
+AuthStack: deploying... [4/5]
+DatabaseStack: success: Published DatabaseStack Template (current_account-curr
+
+ ✅  AuthStack (no changes)
+
+✨  Deployment time: 3.17s
+
+Outputs:
+AuthStack.ExportsOutputFnGetAttUserPool6BA7E5F2Arn686ACC00 = arn:aws:cognito-i
+AuthStack.ExportsOutputRefUserPool6BA7E5F296FD7236 = us-east-1_lojWVqTFh
+AuthStack.UserPoolClientId = 1ialh0scfva1onf1i4725nudon
+AuthStack.UserPoolId = us-east-1_lojWVqTFh
+Stack ARN:
+arn:aws:cloudformation:us-east-1:930664225363:stack/AuthStack/3e24c1c0-a213-11
+
+✨  Total time: 5.14s
+
+DatabaseStack
+DatabaseStack: deploying... [3/5]
+DatabaseStack: creating CloudFormation changeset...
+
+ ✅  DatabaseStack
+
+✨  Deployment time: 36.75s
+
+Outputs:
+DatabaseStack.ExportsOutputFnGetAttAccessLogsTable22612AD2Arn9356A2D9 = arn:aw
+DatabaseStack.ExportsOutputFnGetAttFilesTable1399FAA4Arn25DD9DF2 = arn:aws:dyn
+DatabaseStack.ExportsOutputFnGetAttShareLinksTableFD9EFE25ArnD2D819AE = arn:aw
+DatabaseStack.ExportsOutputFnGetAttUsersTable9725E9C8Arn5684EF99 = arn:aws:dyn
+DatabaseStack.ExportsOutputRefAccessLogsTable22612AD2E6DD90BA = SecureFileVaul
+DatabaseStack.ExportsOutputRefFilesTable1399FAA4592580B8 = SecureFileVault-Files
+DatabaseStack.ExportsOutputRefShareLinksTableFD9EFE2521A37A30 = SecureFileVault-ShareLinks
+DatabaseStack.ExportsOutputRefUsersTable9725E9C857961836 = SecureFileVault-Users
+DatabaseStack.FilesTableName = SecureFileVault-Files
+DatabaseStack.UsersTableName = SecureFileVault-Users
+Stack ARN:
+arn:aws:cloudformation:us-east-1:930664225363:stack/DatabaseStack/2b8c08f0-a201-11f0-85b3-1231049c1733
+
+✨  Total time: 38.72s
+
+LambdaStack
+LambdaStack: deploying... [5/5]
+LambdaStack: creating CloudFormation changeset...
+
+ ✅  LambdaStack (no changes)
+
+✨  Deployment time: 11.64s
+
+Outputs:
+LambdaStack.ApiUrl = https://q4cjbw30a5.execute-api.us-east-1.amazonaws.com/prod/
+LambdaStack.FileStorageAPIEndpoint07F96AD4 = https://q4cjbw30a5.execute-api.us-east-1.amazonaws.com/prod/
+Stack ARN:
+arn:aws:cloudformation:us-east-1:930664225363:stack/LambdaStack/9425f800-a213-11f0-925c-12f4769e453b
+
+✨  Total time: 13.62s

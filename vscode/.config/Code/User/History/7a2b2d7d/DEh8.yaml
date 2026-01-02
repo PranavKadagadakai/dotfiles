@@ -1,0 +1,9 @@
+name: Local Config
+version: 1.0.0
+schema: v1
+models:
+  - name: x-ai/grok-4.1-fast:free
+    provider: openrouter
+    model: x-ai/grok-4.1-fast:free
+    apiBase: https://openrouter.ai/api/v1
+    apiKey: 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

@@ -1,0 +1,401 @@
+# Authentication Flow - Quick Start & Testing Guide
+
+**Last Updated:** 21 November 2025  
+**Status:** ✅ Ready for Testing
+
+---
+
+## 🚀 Quick Start
+
+### 1. Start Backend
+```bash
+cd BackEnd
+python manage.py runserver
+# Server runs on http://localhost:8000
+```
+
+### 2. Start Frontend
+```bash
+cd FrontEnd
+npm run dev
+# App runs on http://localhost:5173
+```
+
+### 3. Open Browser
+```
+http://localhost:5173
+```
+
+---
+
+## 📝 Test Scenarios
+
+### Scenario 1: Complete Registration Flow
+
+**Steps:**
+1. Click "Sign up" on landing page
+2. Fill form:
+   - Username: `teststudent`
+   - Email: `student@example.com`
+   - Password: `TestPass123!` (8+ chars)
+   - Confirm: `TestPass123!`
+   - Role: `Student`
+   - USN: `CSE2023001`
+   - Department: `Computer Science`
+   - Semester: `4`
+3. Click "Sign Up"
+
+**Expected:**
+- ✅ Success message shows
+- ✅ Redirects to `/verify-email` (1.5 seconds)
+- ✅ Console shows verification email (check Django terminal)
+
+**Next: Verify Email**
+1. Copy verification link from console output OR
+2. In browser, check URL like: `/verify-email?token=abc123...`
+3. If no token in URL, paste token in "Verification Token" field
+4. Click "Verify Email"
+
+**Expected:**
+- ✅ "Email Verified!" message
+- ✅ Redirects to `/login` (3 seconds)
+
+---
+
+### Scenario 2: Login After Verification
+
+**Steps:**
+1. On login page, fill:
+   - Username: `teststudent`
+   - Password: `TestPass123!`
+2. Click "Login"
+
+**Expected:**
+- ✅ Redirects to dashboard
+- ✅ User menu shows username
+
+---
+
+### Scenario 3: Forgot Password
+
+**Steps:**
+1. Click "Forgot password?" link on login page
+2. **Step 1 - Request Code:**
+   - Enter email: `student@example.com`
+   - Click "Send Reset Code"
+   - Wait 2 seconds
+
+**Expected:**
+- ✅ "OTP sent to your email!" shows
+- ✅ Form changes to Step 2
+- ✅ Console shows OTP (6 digits)
+
+**Step 2 - Reset Password:**
+1. Enter OTP from console (e.g., `123456`)
+2. New Password: `NewPass789!`
+3. Confirm: `NewPass789!`
+4. Click "Reset Password"
+
+**Expected:**
+- ✅ "Password reset successfully!" message
+- ✅ Redirects to `/login` (2 seconds)
+
+---
+
+### Scenario 4: Login with New Password
+
+**Steps:**
+1. On login page:
+   - Username: `teststudent`
+   - Password: `NewPass789!`
+2. Click "Login"
+
+**Expected:**
+- ✅ Redirects to dashboard
+- ✅ Login works with new password
+
+---
+
+### Scenario 5: Resend Verification Email
+
+**Steps:**
+1. On email verification page, scroll to "Didn't receive the email?"
+2. Enter email: `student@example.com`
+3. Click "Resend Verification Email"
+
+**Expected:**
+- ✅ "Verification email sent!" shows
+- ✅ Console shows new verification email
+- ✅ New token can be used to verify
+
+---
+
+## 🧪 Backend API Testing (curl)
+
+### Register User
+```bash
+curl -X POST http://localhost:8000/api/auth/register/ \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "testuser",
+    "email": "test@example.com",
+    "password": "TestPass123!",
+    "password_confirm": "TestPass123!",
+    "user_type": "student",
+    "usn": "CSE2023001",
+    "department": "Computer Science",
+    "semester": 4
+  }'
+```
+
+**Response:**
+```json
+{
+  "id": 1,
+  "username": "testuser",
+  "email": "test@example.com",
+  "user_type": "student",
+  "is_email_verified": false,
+  "message": "Registration successful! Please check your email to verify your account."
+}
+```
+
+### Verify Email
+```bash
+# Get token from console output
+curl -X POST http://localhost:8000/api/auth/verify-email/ \
+  -H "Content-Type: application/json" \
+  -d '{"token": "your-token-uuid"}'
+```
+
+**Response:**
+```json
+{
+  "message": "Email verified successfully! You can now log in."
+}
+```
+
+### Request Password Reset
+```bash
+curl -X POST http://localhost:8000/api/auth/password-reset/request/ \
+  -H "Content-Type: application/json" \
+  -d '{"email": "test@example.com"}'
+```
+
+**Response:**
+```json
+{
+  "message": "Password reset OTP sent to your email."
+}
+```
+
+### Reset Password
+```bash
+# Get OTP from console output
+curl -X POST http://localhost:8000/api/auth/password-reset/confirm/ \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "test@example.com",
+    "otp": "123456",
+    "new_password": "NewPassword789!"
+  }'
+```
+
+**Response:**
+```json
+{
+  "message": "Password reset successfully!"
+}
+```
+
+### Login
+```bash
+curl -X POST http://localhost:8000/api/auth/login/ \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "testuser",
+    "password": "NewPassword789!"
+  }'
+```
+
+**Response:**
+```json
+{
+  "access": "eyJ0eXAiOiJKV1QiLCJhbGc...",
+  "refresh": "eyJ0eXAiOiJKV1QiLCJhbGc...",
+  "user": {
+    "id": 1,
+    "username": "testuser",
+    "email": "test@example.com",
+    "user_type": "student",
+    "is_email_verified": true
+  }
+}
+```
+
+---
+
+## ⚠️ Common Issues & Fixes
+
+### Issue: "Email verification token is required"
+**Fix:** Make sure token parameter is included in API call
+
+### Issue: "Invalid or expired verification token"
+**Possible causes:**
+- Token copied incorrectly (has spaces)
+- Token expired (older than 7 days)
+- Token already used
+**Fix:** Click "Resend Verification Email" to get new token
+
+### Issue: "Invalid OTP"
+**Possible causes:**
+- OTP typed incorrectly
+- OTP from wrong user
+**Fix:** Request new OTP
+
+### Issue: "OTP has expired"
+**Cause:** OTP is only valid for 10 minutes
+**Fix:** Request new OTP on forgot password page
+
+### Issue: Password validation error
+**Cause:** Password must be 8+ characters
+**Fix:** Enter password with at least 8 characters
+
+### Issue: Passwords do not match
+**Fix:** Ensure confirmation password matches exactly
+
+### Issue: Emails not appearing in console
+**Check:**
+1. Is Django terminal showing the output?
+2. Check Django terminal for error messages
+3. Scroll up in Django terminal to find email
+
+---
+
+## 📋 Email Console Output Example
+
+When running with console email backend, Django terminal shows:
+
+```
+[Email Verification] Subject: Verify Your CertifyTrack Email
+To: student@example.com
+
+Content:
+Hi teststudent,
+
+Thank you for registering with CertifyTrack!
+...
+[Verification link with token]
+...
+
+---
+```
+
+---
+
+## 🔍 Debugging Tips
+
+### Check Network Requests
+1. Open browser DevTools (F12)
+2. Go to Network tab
+3. Try actions (register, verify, login)
+4. See requests and responses
+
+### Check Console Errors
+1. Open browser DevTools (F12)
+2. Go to Console tab
+3. Look for red error messages
+4. Click to expand and read details
+
+### Check Django Terminal
+1. Look for email output (console backend)
+2. Look for error messages in red
+3. Look for SQL queries (if DEBUG=True)
+
+### Check .env Configuration
+1. Verify email settings are correct
+2. Check FRONTEND_URL matches browser URL
+3. Check DATABASE settings
+
+---
+
+## ✅ Full Test Checklist
+
+**Frontend Tests:**
+- [ ] Register new account
+- [ ] See verification email in console
+- [ ] Click verification link in email (or paste token)
+- [ ] Verify email successfully
+- [ ] Redirect to login
+- [ ] Login with original password
+- [ ] Logout
+- [ ] Click "Forgot password?"
+- [ ] Enter email, get OTP
+- [ ] See OTP in console
+- [ ] Enter OTP and new password
+- [ ] Reset password successfully
+- [ ] Login with new password
+- [ ] Logout
+- [ ] Request new verification email
+- [ ] See new token in console
+- [ ] Create multiple test accounts
+- [ ] Test with different roles (mentor, club_organizer)
+
+**Backend Tests:**
+- [ ] Check user created in database
+- [ ] Check profile created (student/mentor)
+- [ ] Check is_email_verified flag
+- [ ] Check tokens stored correctly
+- [ ] Check audit logs created
+
+**Error Handling Tests:**
+- [ ] Try invalid password (< 8 chars)
+- [ ] Try mismatched passwords
+- [ ] Try duplicate email
+- [ ] Try duplicate USN (for students)
+- [ ] Try invalid OTP
+- [ ] Try expired OTP (wait 10+ mins)
+- [ ] Try invalid token
+
+---
+
+## 🎯 Success Criteria
+
+When ALL of these work, authentication flow is complete:
+
+✅ Register → Email verification link sent  
+✅ Verify email → Account marked as verified  
+✅ Login → Get JWT tokens  
+✅ Forgot password → OTP sent  
+✅ Reset password → Password updated  
+✅ New login → Works with new password  
+✅ Resend verification → New token sent  
+
+---
+
+## 📞 Need Help?
+
+1. **Check Documentation**
+   - `AUTHENTICATION_FLOW_COMPLETE.md` - Full guide
+   - `AUTH_IMPLEMENTATION_COMPLETE.md` - Summary
+
+2. **Check Django Terminal**
+   - Look for email output
+   - Look for error messages
+   - Check SQL queries
+
+3. **Check Browser Console**
+   - Press F12
+   - Go to Console tab
+   - Look for JavaScript errors
+
+4. **Check Network Tab**
+   - Press F12
+   - Go to Network tab
+   - Click action and see request/response
+
+---
+
+**Ready to test? Let's go! 🚀**
+
+Start with Scenario 1 above ☝️

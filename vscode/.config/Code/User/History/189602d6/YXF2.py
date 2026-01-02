@@ -1,0 +1,1144 @@
+from rest_framework import generics, viewsets, status
+from rest_framework.response import Response
+from rest_framework.decorators import action, api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.exceptions import ValidationError, PermissionDenied
+from django.shortcuts import get_object_or_404
+from django.db.models import Count, Sum, Q
+from django.utils.timezone import now, timedelta
+from django.core.management.base import CommandError
+from io import BytesIO
+from django.core.files.base import ContentFile
+import qrcode
+import csv
+import secrets
+import string
+from datetime import datetime, time
+
+from .models import (
+    User, Student, Mentor, Club, Event, EventRegistration, Certificate,
+    Hall, HallBooking, AICTECategory, AICTEPointTransaction, Notification, AuditLog,
+    ClubMember, ClubRole, EventAttendance, CertificateTemplate
+)
+from .serializers import (
+    UserSerializer, RegisterSerializer, EventSerializer,
+    CertificateSerializer, EventRegistrationSerializer, ClubSerializer,
+    HallSerializer, HallBookingSerializer, AICTECategorySerializer, AICTEPointTransactionSerializer,
+    NotificationSerializer, AuditLogSerializer, StudentSerializer, StudentProfileSerializer,
+    MentorProfileSerializer, ClubMemberSerializer, ClubRoleSerializer,
+    EventAttendanceSerializer, CertificateTemplateSerializer
+)
+from .permissions import IsClubAdmin, IsStudent, IsMentor
+
+
+def log_action(user, action):
+    """Log user actions for audit trail"""
+    AuditLog.objects.create(user=user, action=action)
+
+
+def send_verification_email(user):
+    """Placeholder for email verification - integrate with real email service"""
+    print(f"[Email Verification] Sent to {user.email} with token: {user.email_verification_token}")
+
+
+def send_password_reset_email(user, otp):
+    """Placeholder for password reset OTP - integrate with real email service"""
+    print(f"[Password Reset OTP] Sent to {user.email}: {otp}")
+
+
+# ============================================================================
+# AUTHENTICATION & REGISTRATION
+# ============================================================================
+
+class RegisterView(generics.CreateAPIView):
+    """
+    User registration endpoint supporting students, mentors, and club organizers.
+    Requires email verification before account activation.
+    """
+    queryset = User.objects.all()
+    permission_classes = (AllowAny,)
+    serializer_class = RegisterSerializer
+
+    def perform_create(self, serializer):
+        user = serializer.save()
+        log_action(user, f"User registered: {user.username}")
+
+    def create(self, request, *args, **kwargs):
+        response = super().create(request, *args, **kwargs)
+        response.data['message'] = "Registration successful! Please check your email to verify your account."
+        return response
+
+
+class VerifyEmailView(generics.GenericAPIView):
+    """
+    Email verification endpoint. Marks user as verified when valid token is provided.
+    """
+    permission_classes = (AllowAny,)
+    
+    def post(self, request):
+        token = request.data.get('token')
+        if not token:
+            return Response(
+                {'error': 'Verification token is required.'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        user = User.objects.filter(email_verification_token=token).first()
+        if not user:
+            return Response(
+                {'error': 'Invalid or expired verification token.'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        user.is_email_verified = True
+        user.email_verification_token = None
+        user.save()
+        log_action(user, "Email verified")
+        
+        return Response(
+            {'message': 'Email verified successfully! You can now log in.'},
+            status=status.HTTP_200_OK
+        )
+
+
+class RequestPasswordResetView(generics.GenericAPIView):
+    """
+    Request password reset OTP (6 digits, 10-minute validity).
+    """
+    permission_classes = (AllowAny,)
+    
+    def post(self, request):
+        email = request.data.get('email')
+        if not email:
+            return Response(
+                {'error': 'Email is required.'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        user = User.objects.filter(email=email).first()
+        if not user:
+            return Response(
+                {'error': 'User with this email not found.'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        
+        # Generate 6-digit OTP
+        otp = ''.join(secrets.choice(string.digits) for _ in range(6))
+        user.password_reset_token = otp
+        user.password_reset_expires = now() + timedelta(minutes=10)
+        user.save()
+        
+        send_password_reset_email(user, otp)
+        log_action(user, "Password reset requested")
+        
+        return Response(
+            {'message': 'Password reset OTP sent to your email.'},
+            status=status.HTTP_200_OK
+        )
+
+
+class ResetPasswordView(generics.GenericAPIView):
+    """
+    Reset password using OTP and new password.
+    """
+    permission_classes = (AllowAny,)
+    
+    def post(self, request):
+        email = request.data.get('email')
+        otp = request.data.get('otp')
+        new_password = request.data.get('new_password')
+        
+        if not all([email, otp, new_password]):
+            return Response(
+                {'error': 'Email, OTP, and new password are required.'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        user = User.objects.filter(email=email).first()
+        if not user:
+            return Response(
+                {'error': 'User not found.'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        
+        if not user.password_reset_token or user.password_reset_token != otp:
+            return Response(
+                {'error': 'Invalid OTP.'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        if user.password_reset_expires < now():
+            return Response(
+                {'error': 'OTP has expired.'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        user.set_password(new_password)
+        user.password_reset_token = None
+        user.password_reset_expires = None
+        user.save()
+        log_action(user, "Password reset successfully")
+        
+        return Response(
+            {'message': 'Password reset successfully!'},
+            status=status.HTTP_200_OK
+        )
+
+
+class LoginView(generics.GenericAPIView):
+    """
+    Custom login view handling failed login attempts and account lockout.
+    Requires email verification before allowing login.
+    """
+    permission_classes = (AllowAny,)
+    
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+        
+        if not username or not password:
+            return Response(
+                {'error': 'Username and password are required.'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        user = User.objects.filter(Q(username=username) | Q(email=username)).first()
+        
+        if not user:
+            return Response(
+                {'error': 'Invalid credentials.'},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+        
+        # Check if account is locked
+        if user.account_locked_until and user.account_locked_until > now():
+            return Response(
+                {'error': 'Account is locked. Try again later.'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+        
+        # Check email verification
+        if not user.is_email_verified:
+            return Response(
+                {'error': 'Please verify your email before logging in.'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+        
+        # Verify password
+        if not user.check_password(password):
+            user.failed_login_attempts += 1
+            
+            # Lock account after 5 failed attempts
+            if user.failed_login_attempts >= 5:
+                user.account_locked_until = now() + timedelta(minutes=15)
+            
+            user.save()
+            log_action(user, f"Failed login attempt ({user.failed_login_attempts})")
+            
+            return Response(
+                {'error': 'Invalid credentials.'},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+        
+        # Successful login - reset failed attempts
+        user.failed_login_attempts = 0
+        user.account_locked_until = None
+        user.save()
+        log_action(user, "User logged in")
+        
+        from rest_framework_simplejwt.tokens import RefreshToken
+        
+        refresh = RefreshToken.for_user(user)
+        return Response({
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+            'user': UserSerializer(user).data
+        }, status=status.HTTP_200_OK)
+
+
+# ============================================================================
+# PROFILE MANAGEMENT
+# ============================================================================
+
+class ProfileView(generics.RetrieveUpdateAPIView):
+    """
+    User profile view. Returns role-specific profile information.
+    """
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user
+    
+    def get_serializer_class(self):
+        user = self.request.user
+        if user.user_type == 'student':
+            return StudentProfileSerializer if hasattr(user, 'student_profile') else UserSerializer
+        elif user.user_type == 'mentor':
+            return MentorProfileSerializer if hasattr(user, 'mentor_profile') else UserSerializer
+        return UserSerializer
+    
+    def get_object(self):
+        user = self.request.user
+        if user.user_type == 'student' and hasattr(user, 'student_profile'):
+            return user.student_profile
+        elif user.user_type == 'mentor' and hasattr(user, 'mentor_profile'):
+            return user.mentor_profile
+        return user
+
+
+class StudentProfileView(generics.RetrieveUpdateAPIView):
+    """
+    Student profile view with comprehensive profile fields.
+    Handles profile completion tracking.
+    """
+    serializer_class = StudentProfileSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_object(self):
+        return get_object_or_404(Student, user=self.request.user)
+    
+    def perform_update(self, serializer):
+        student = serializer.save()
+        
+        # Check if profile is complete
+        required_fields = [
+            'phone_number', 'date_of_birth', 'address',
+            'emergency_contact_name', 'emergency_contact_phone'
+        ]
+        
+        is_complete = all(getattr(student, field, None) for field in required_fields)
+        if is_complete and not student.profile_completed:
+            student.profile_completed = True
+            student.profile_completed_at = now()
+            student.save()
+        
+        log_action(self.request.user, "Updated student profile")
+
+
+class MentorProfileView(generics.RetrieveUpdateAPIView):
+    """
+    Mentor profile view with comprehensive profile fields.
+    Handles profile completion tracking.
+    """
+    serializer_class = MentorProfileSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_object(self):
+        return get_object_or_404(Mentor, user=self.request.user)
+    
+    def perform_update(self, serializer):
+        mentor = serializer.save()
+        
+        # Check if profile is complete
+        required_fields = [
+            'phone_number', 'date_of_birth', 'address', 'qualifications'
+        ]
+        
+        is_complete = all(getattr(mentor, field, None) for field in required_fields)
+        if is_complete and not mentor.profile_completed:
+            mentor.profile_completed = True
+            mentor.profile_completed_at = now()
+            mentor.save()
+        
+        log_action(self.request.user, "Updated mentor profile")
+
+
+# ============================================================================
+# ADMIN USER MANAGEMENT
+# ============================================================================
+
+class AdminUserCreationView(generics.CreateAPIView):
+    """
+    Admin endpoint for creating users (students, mentors, club organizers).
+    Supports bulk user creation via CSV.
+    """
+    queryset = User.objects.all()
+    permission_classes = [IsAuthenticated]
+    serializer_class = RegisterSerializer
+    
+    def create(self, request, *args, **kwargs):
+        # Check admin permission
+        if request.user.user_type != 'admin':
+            raise PermissionDenied("Only administrators can create users.")
+        
+        return super().create(request, *args, **kwargs)
+    
+    def perform_create(self, serializer):
+        user = serializer.save()
+        # Auto-verify email for admin-created accounts
+        user.is_email_verified = True
+        user.email_verification_token = None
+        user.save()
+        log_action(self.request.user, f"Created user account: {user.username}")
+
+
+class BulkUserCreationView(generics.GenericAPIView):
+    """
+    Bulk user creation from CSV file.
+    CSV format: username,email,first_name,last_name,user_type,usn/employee_id,department,semester/designation
+    """
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request):
+        if request.user.user_type != 'admin':
+            raise PermissionDenied("Only administrators can create users.")
+        
+        csv_file = request.FILES.get('csv_file')
+        if not csv_file:
+            return Response(
+                {'error': 'CSV file is required.'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        try:
+            decoded_file = csv_file.read().decode('utf-8').splitlines()
+            csv_reader = csv.DictReader(decoded_file)
+            
+            created_users = []
+            errors = []
+            
+            for row_num, row in enumerate(csv_reader, start=2):
+                try:
+                    username = row.get('username', '').strip()
+                    email = row.get('email', '').strip()
+                    first_name = row.get('first_name', '').strip()
+                    last_name = row.get('last_name', '').strip()
+                    user_type = row.get('user_type', '').strip()
+                    department = row.get('department', '').strip()
+                    
+                    if not all([username, email, user_type]):
+                        errors.append(f"Row {row_num}: Missing required fields")
+                        continue
+                    
+                    # Generate temporary password
+                    temp_password = secrets.token_urlsafe(12)
+                    
+                    user = User.objects.create(
+                        username=username,
+                        email=email,
+                        first_name=first_name,
+                        last_name=last_name,
+                        user_type=user_type,
+                        is_email_verified=True
+                    )
+                    user.set_password(temp_password)
+                    user.save()
+                    
+                    # Create role-specific profile
+                    if user_type == 'student':
+                        usn = row.get('usn', '').strip()
+                        semester = int(row.get('semester', 1))
+                        if not usn:
+                            errors.append(f"Row {row_num}: USN required for student")
+                            user.delete()
+                            continue
+                        Student.objects.create(
+                            user=user, usn=usn, department=department, semester=semester
+                        )
+                    
+                    elif user_type == 'mentor':
+                        employee_id = row.get('employee_id', '').strip()
+                        designation = row.get('designation', '').strip()
+                        if not all([employee_id, designation]):
+                            errors.append(f"Row {row_num}: Employee ID and Designation required for mentor")
+                            user.delete()
+                            continue
+                        Mentor.objects.create(
+                            user=user, employee_id=employee_id, department=department, designation=designation
+                        )
+                    
+                    created_users.append({
+                        'username': username,
+                        'email': email,
+                        'temporary_password': temp_password
+                    })
+                    log_action(request.user, f"Created user via bulk import: {username}")
+                
+                except Exception as e:
+                    errors.append(f"Row {row_num}: {str(e)}")
+            
+            return Response({
+                'created_count': len(created_users),
+                'created_users': created_users,
+                'errors': errors
+            }, status=status.HTTP_201_CREATED)
+        
+        except Exception as e:
+            return Response(
+                {'error': f"Error processing CSV: {str(e)}"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+
+# ============================================================================
+# MENTOR-MENTEE MANAGEMENT
+# ============================================================================
+
+class MentorMenteeAssignmentView(generics.GenericAPIView):
+    """
+    Admin endpoint for assigning/reassigning mentees to mentors.
+    Supports bulk assignment via JSON.
+    """
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request):
+        if request.user.user_type != 'admin':
+            raise PermissionDenied("Only administrators can manage mentor assignments.")
+        
+        mentor_id = request.data.get('mentor_id')
+        student_ids = request.data.get('student_ids', [])
+        
+        if not mentor_id:
+            return Response(
+                {'error': 'Mentor ID is required.'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        mentor = get_object_or_404(Mentor, id=mentor_id)
+        
+        for student_id in student_ids:
+            try:
+                student = Student.objects.get(id=student_id)
+                old_mentor = student.mentor
+                student.mentor = mentor
+                student.save()
+                log_action(request.user, f"Assigned student {student.usn} to mentor {mentor.employee_id}")
+            except Student.DoesNotExist:
+                pass
+        
+        return Response({
+            'message': f'Successfully assigned {len(student_ids)} students to mentor {mentor.user.get_full_name()}',
+            'assigned_count': len(student_ids)
+        }, status=status.HTTP_200_OK)
+
+
+class BulkMenteeAssignmentView(generics.GenericAPIView):
+    """
+    Bulk mentee assignment from CSV file.
+    CSV format: mentor_employee_id,student_usn
+    """
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request):
+        if request.user.user_type != 'admin':
+            raise PermissionDenied("Only administrators can manage mentor assignments.")
+        
+        csv_file = request.FILES.get('csv_file')
+        if not csv_file:
+            return Response(
+                {'error': 'CSV file is required.'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        try:
+            decoded_file = csv_file.read().decode('utf-8').splitlines()
+            csv_reader = csv.DictReader(decoded_file)
+            
+            assigned_count = 0
+            errors = []
+            
+            for row_num, row in enumerate(csv_reader, start=2):
+                try:
+                    mentor_emp_id = row.get('mentor_employee_id', '').strip()
+                    student_usn = row.get('student_usn', '').strip()
+                    
+                    if not all([mentor_emp_id, student_usn]):
+                        errors.append(f"Row {row_num}: Missing mentor_employee_id or student_usn")
+                        continue
+                    
+                    mentor = Mentor.objects.filter(employee_id=mentor_emp_id).first()
+                    student = Student.objects.filter(usn=student_usn).first()
+                    
+                    if not mentor:
+                        errors.append(f"Row {row_num}: Mentor with ID {mentor_emp_id} not found")
+                        continue
+                    
+                    if not student:
+                        errors.append(f"Row {row_num}: Student with USN {student_usn} not found")
+                        continue
+                    
+                    student.mentor = mentor
+                    student.save()
+                    assigned_count += 1
+                    log_action(request.user, f"Bulk assigned student {student_usn} to mentor {mentor_emp_id}")
+                
+                except Exception as e:
+                    errors.append(f"Row {row_num}: {str(e)}")
+            
+            return Response({
+                'assigned_count': assigned_count,
+                'errors': errors
+            }, status=status.HTTP_200_OK)
+        
+        except Exception as e:
+            return Response(
+                {'error': f"Error processing CSV: {str(e)}"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+
+# ============================================================================
+# CLUB MANAGEMENT
+# ============================================================================
+
+class ClubViewSet(viewsets.ModelViewSet):
+    """
+    CRUD operations for clubs.
+    Only admins and mentors (faculty coordinators) can create clubs.
+    """
+    queryset = Club.objects.all()
+    serializer_class = ClubSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def perform_create(self, serializer):
+        if self.request.user.user_type not in ['admin', 'mentor']:
+            raise PermissionDenied("Only admins and mentors can create clubs.")
+        
+        instance = serializer.save()
+        log_action(self.request.user, f"Created Club: {instance.name}")
+
+
+class ClubMemberViewSet(viewsets.ModelViewSet):
+    """
+    Club member management. Support adding, removing, and updating member roles.
+    """
+    queryset = ClubMember.objects.all()
+    serializer_class = ClubMemberSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_queryset(self):
+        club_id = self.request.query_params.get('club_id')
+        if club_id:
+            return ClubMember.objects.filter(club_id=club_id)
+        return super().get_queryset()
+    
+    def perform_create(self, serializer):
+        club_member = serializer.save()
+        log_action(self.request.user, f"Added {club_member.student.user.username} to club {club_member.club.name}")
+
+
+class ClubRoleViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    Read-only view for club roles and their permissions.
+    """
+    queryset = ClubRole.objects.all()
+    serializer_class = ClubRoleSerializer
+    permission_classes = [IsAuthenticated]
+
+
+# ============================================================================
+# EVENT MANAGEMENT
+# ============================================================================
+
+class EventViewSet(viewsets.ModelViewSet):
+    """
+    Event management with full lifecycle support.
+    Supports event creation, registration, attendance marking, and certificate generation.
+    """
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_permissions(self):
+        if self.action in ['create', 'update', 'partial_update', 'destroy', 'generate_certificates', 'start_event', 'end_event', 'mark_attendance']:
+            self.permission_classes = [IsClubAdmin]
+        elif self.action == 'register':
+            self.permission_classes = [IsStudent]
+        else:
+            self.permission_classes = [IsAuthenticated]
+        return super().get_permissions()
+
+    def perform_create(self, serializer):
+        user = self.request.user
+        student_profile = getattr(user, "student_profile", None)
+        
+        if user.user_type == 'club_organizer' and student_profile:
+            club = Club.objects.filter(
+                Q(club_head=student_profile) | Q(members__student=student_profile)
+            ).first()
+            if club:
+                event = serializer.save(club=club, created_by=user)
+                log_action(user, f"Created Event: {event.name}")
+                return
+        
+        raise PermissionDenied("Only club members can create events.")
+
+    @action(detail=True, methods=['post'])
+    def register(self, request, pk=None):
+        """Student event registration"""
+        event = self.get_object()
+        student = getattr(request.user, "student_profile", None)
+        
+        if not student:
+            raise PermissionDenied("Only students can register for events.")
+        
+        if event.status != 'scheduled':
+            raise ValidationError("Event registration is currently closed.")
+        
+        if event.max_participants and event.registrations.count() >= event.max_participants:
+            raise ValidationError("Event has reached maximum capacity.")
+        
+        if EventRegistration.objects.filter(event=event, student=student).exists():
+            raise ValidationError("You are already registered for this event.")
+        
+        EventRegistration.objects.create(event=event, student=student)
+        log_action(request.user, f"Registered for event: {event.name}")
+        
+        return Response(
+            {'message': 'Successfully registered for event.'},
+            status=status.HTTP_201_CREATED
+        )
+
+    @action(detail=True, methods=['post'])
+    def start(self, request, pk=None):
+        """Start an event"""
+        event = self.get_object()
+        
+        if event.status != 'scheduled':
+            raise ValidationError("Only scheduled events can be started.")
+        
+        event.status = 'ongoing'
+        event.save()
+        log_action(request.user, f"Started event: {event.name}")
+        
+        return Response({'message': 'Event started successfully.'})
+
+    @action(detail=True, methods=['post'])
+    def end(self, request, pk=None):
+        """End an event"""
+        event = self.get_object()
+        
+        if event.status != 'ongoing':
+            raise ValidationError("Only ongoing events can be ended.")
+        
+        event.status = 'completed'
+        event.save()
+        log_action(request.user, f"Ended event: {event.name}")
+        
+        return Response({'message': 'Event ended successfully.'})
+
+    @action(detail=True, methods=['post'])
+    def mark_attendance(self, request, pk=None):
+        """Mark attendance for event participants"""
+        event = self.get_object()
+        attendance_data = request.data.get('attendance', [])
+        
+        if not isinstance(attendance_data, list):
+            raise ValidationError("Attendance data must be a list.")
+        
+        created_count = 0
+        for item in attendance_data:
+            student_id = item.get('student_id')
+            is_present = item.get('is_present', True)
+            
+            try:
+                student = Student.objects.get(id=student_id)
+                attendance, created = EventAttendance.objects.update_or_create(
+                    event=event,
+                    student=student,
+                    defaults={
+                        'is_present': is_present,
+                        'marked_by': request.user
+                    }
+                )
+                if created:
+                    created_count += 1
+            except Student.DoesNotExist:
+                pass
+        
+        log_action(request.user, f"Marked attendance for {len(attendance_data)} participants")
+        
+        return Response({
+            'message': f'Attendance marked for {len(attendance_data)} participants.',
+            'created_count': created_count
+        })
+
+    @action(detail=True, methods=['post'], url_path='generate-certificates')
+    def generate_certificates(self, request, pk=None):
+        """Generate certificates for event participants"""
+        event = self.get_object()
+        
+        if event.status != 'completed':
+            raise ValidationError("Certificates can only be generated for completed events.")
+        
+        # Get attendees (only mark as attended those with attendance records)
+        attendees = EventAttendance.objects.filter(event=event, is_present=True).select_related('student')
+        
+        if not attendees.exists():
+            raise ValidationError("No attendees found for this event.")
+        
+        certificate_count = 0
+        for attendance in attendees:
+            student = attendance.student
+            certificate, created = Certificate.objects.get_or_create(event=event, student=student)
+            
+            # Generate QR code with certificate data
+            qr_data = f"Certificate ID: {certificate.id}, Event: {event.id}, Student: {student.usn}"
+            qr = qrcode.make(qr_data)
+            
+            # TODO: Implement full PDF generation with template
+            certificate_count += 1
+        
+        log_action(request.user, f"Generated {certificate_count} certificates for event: {event.name}")
+        
+        return Response({
+            'message': f'Successfully generated {certificate_count} certificates.',
+            'certificate_count': certificate_count
+        })
+
+
+class EventAttendanceViewSet(viewsets.ModelViewSet):
+    """
+    Event attendance tracking.
+    """
+    queryset = EventAttendance.objects.all()
+    serializer_class = EventAttendanceSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_queryset(self):
+        event_id = self.request.query_params.get('event_id')
+        if event_id:
+            return EventAttendance.objects.filter(event_id=event_id)
+        return super().get_queryset()
+
+
+# ============================================================================
+# HALL BOOKING MANAGEMENT
+# ============================================================================
+
+class HallViewSet(viewsets.ModelViewSet):
+    """
+    Hall/venue management.
+    """
+    queryset = Hall.objects.all()
+    serializer_class = HallSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class HallBookingViewSet(viewsets.ModelViewSet):
+    """
+    Hall booking with conflict detection and approval workflow.
+    """
+    queryset = HallBooking.objects.all()
+    serializer_class = HallBookingSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        booking_status = self.request.query_params.get('status')
+        if booking_status:
+            return HallBooking.objects.filter(booking_status=booking_status)
+        return super().get_queryset()
+
+    def create(self, request, *args, **kwargs):
+        """Create hall booking with conflict detection"""
+        hall_id = request.data.get('hall')
+        booking_date = request.data.get('booking_date')
+        start_time = request.data.get('start_time')
+        end_time = request.data.get('end_time')
+        
+        # Check for conflicts
+        conflicting_bookings = HallBooking.objects.filter(
+            hall_id=hall_id,
+            booking_date=booking_date,
+            booking_status__in=['APPROVED', 'PENDING'],
+            start_time__lt=end_time,
+            end_time__gt=start_time
+        )
+        
+        if conflicting_bookings.exists():
+            return Response(
+                {
+                    'error': 'Hall is not available for the selected time slot.',
+                    'conflicts': HallBookingSerializer(conflicting_bookings, many=True).data
+                },
+                status=status.HTTP_409_CONFLICT
+            )
+        
+        return super().create(request, *args, **kwargs)
+
+    def perform_create(self, serializer):
+        user = self.request.user
+        club_member = ClubMember.objects.filter(student__user=user).first() if user.user_type == 'club_organizer' else None
+        
+        instance = serializer.save(booked_by=club_member)
+        log_action(user, f"Requested hall booking for {instance.hall.name}")
+
+    @action(detail=True, methods=['post'])
+    def approve(self, request, pk=None):
+        """Admin approval of hall booking"""
+        if request.user.user_type != 'admin':
+            raise PermissionDenied("Only administrators can approve bookings.")
+        
+        booking = self.get_object()
+        booking.booking_status = 'APPROVED'
+        booking.approved_by = request.user
+        booking.save()
+        log_action(request.user, f"Approved hall booking: {booking.hall.name}")
+        
+        return Response({'message': 'Hall booking approved.'})
+
+    @action(detail=True, methods=['post'])
+    def reject(self, request, pk=None):
+        """Admin rejection of hall booking"""
+        if request.user.user_type != 'admin':
+            raise PermissionDenied("Only administrators can reject bookings.")
+        
+        booking = self.get_object()
+        booking.booking_status = 'REJECTED'
+        booking.rejection_reason = request.data.get('reason', '')
+        booking.save()
+        log_action(request.user, f"Rejected hall booking: {booking.hall.name}")
+        
+        return Response({'message': 'Hall booking rejected.'})
+
+
+# ============================================================================
+# CERTIFICATE MANAGEMENT
+# ============================================================================
+
+class CertificateTemplateViewSet(viewsets.ModelViewSet):
+    """
+    Global certificate template management.
+    Only administrators can create/update templates.
+    """
+    queryset = CertificateTemplate.objects.all()
+    serializer_class = CertificateTemplateSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_permissions(self):
+        if self.action in ['create', 'update', 'partial_update', 'destroy']:
+            self.permission_classes = [IsAuthenticated]
+        return super().get_permissions()
+    
+    def perform_create(self, serializer):
+        if self.request.user.user_type != 'admin':
+            raise PermissionDenied("Only administrators can create certificate templates.")
+        
+        template = serializer.save(created_by=self.request.user)
+        log_action(self.request.user, f"Created certificate template: {template.name}")
+    
+    def perform_update(self, serializer):
+        if self.request.user.user_type != 'admin':
+            raise PermissionDenied("Only administrators can update certificate templates.")
+        
+        template = serializer.save()
+        log_action(self.request.user, f"Updated certificate template: {template.name}")
+
+
+class CertificateViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    Certificate viewing. Students can view their own, mentors can view mentees'.
+    """
+    serializer_class = CertificateSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.user_type == 'student':
+            return Certificate.objects.filter(student__user=user)
+        elif user.user_type == 'mentor':
+            mentees = Student.objects.filter(mentor__user=user)
+            return Certificate.objects.filter(student__in=mentees)
+        elif user.user_type == 'admin':
+            return Certificate.objects.all()
+        return Certificate.objects.none()
+
+    @action(detail=False, methods=['get'], url_path='verify/(?P<file_hash>[^/.]+)')
+    def verify(self, request, file_hash=None):
+        """Verify certificate by file hash"""
+        cert = Certificate.objects.filter(file_hash=file_hash).select_related('student', 'event').first()
+        
+        if not cert:
+            return Response(
+                {'verified': False, 'message': 'Certificate not found.'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        
+        return Response({
+            'verified': True,
+            'certificate_id': cert.id,
+            'student_usn': cert.student.usn,
+            'event_name': cert.event.name,
+            'issue_date': cert.issue_date,
+        })
+
+
+# ============================================================================
+# AICTE POINTS MANAGEMENT
+# ============================================================================
+
+class AICTECategoryViewSet(viewsets.ModelViewSet):
+    """
+    AICTE point categories and rules.
+    Only administrators can create/modify.
+    """
+    queryset = AICTECategory.objects.all()
+    serializer_class = AICTECategorySerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_permissions(self):
+        if self.action in ['create', 'update', 'partial_update', 'destroy']:
+            if self.request.user.user_type != 'admin':
+                raise PermissionDenied("Only administrators can manage AICTE categories.")
+        return super().get_permissions()
+
+
+class AICTEPointTransactionViewSet(viewsets.ModelViewSet):
+    """
+    AICTE point transactions with mentor approval workflow.
+    """
+    queryset = AICTEPointTransaction.objects.all()
+    serializer_class = AICTEPointTransactionSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_queryset(self):
+        user = self.request.user
+        if user.user_type == 'student':
+            return AICTEPointTransaction.objects.filter(student__user=user)
+        elif user.user_type == 'mentor':
+            mentees = Student.objects.filter(mentor__user=user)
+            return AICTEPointTransaction.objects.filter(student__in=mentees)
+        elif user.user_type == 'admin':
+            return AICTEPointTransaction.objects.all()
+        return AICTEPointTransaction.objects.none()
+
+    @action(detail=True, methods=['post'])
+    def approve(self, request, pk=None):
+        """Mentor approval of AICTE points"""
+        tx = self.get_object()
+        mentor = getattr(request.user, 'mentor_profile', None)
+        
+        if not mentor or tx.student.mentor != mentor:
+            raise PermissionDenied("Only assigned mentor can approve points.")
+        
+        tx.status = 'APPROVED'
+        tx.approved_by = request.user
+        tx.approval_date = now()
+        tx.save()
+        log_action(request.user, f"Approved AICTE transaction ID {tx.id}")
+        
+        return Response({'message': 'Points approved successfully.'})
+
+    @action(detail=True, methods=['post'])
+    def reject(self, request, pk=None):
+        """Mentor rejection of AICTE points"""
+        tx = self.get_object()
+        mentor = getattr(request.user, 'mentor_profile', None)
+        
+        if not mentor or tx.student.mentor != mentor:
+            raise PermissionDenied("Only assigned mentor can reject points.")
+        
+        tx.status = 'REJECTED'
+        tx.rejection_reason = request.data.get('reason', '')
+        tx.approved_by = request.user
+        tx.approval_date = now()
+        tx.save()
+        log_action(request.user, f"Rejected AICTE transaction ID {tx.id}")
+        
+        return Response({'message': 'Points rejected.'})
+
+
+# ============================================================================
+# NOTIFICATION MANAGEMENT
+# ============================================================================
+
+class NotificationViewSet(viewsets.ModelViewSet):
+    """
+    User notifications (email, in-app, SMS).
+    """
+    queryset = Notification.objects.all()
+    serializer_class = NotificationSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user).order_by('-created_at')
+
+    @action(detail=False, methods=['post'])
+    def mark_all_read(self, request):
+        """Mark all notifications as read"""
+        notifications = self.get_queryset()
+        notifications.update(is_read=True)
+        log_action(request.user, "Marked all notifications as read")
+        
+        return Response({'message': 'All notifications marked as read.'})
+
+    @action(detail=True, methods=['post'])
+    def mark_read(self, request, pk=None):
+        """Mark single notification as read"""
+        notification = self.get_object()
+        notification.is_read = True
+        notification.save()
+        
+        return Response({'message': 'Notification marked as read.'})
+
+
+# ============================================================================
+# AUDIT & REPORTING
+# ============================================================================
+
+class AuditLogViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    Audit logs - admin only access.
+    """
+    queryset = AuditLog.objects.all()
+    serializer_class = AuditLogSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_queryset(self):
+        if self.request.user.user_type != 'admin':
+            raise PermissionDenied("Only administrators can view audit logs.")
+        return super().get_queryset().order_by('-timestamp')
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def dashboard_stats(request):
+    """Get dashboard statistics based on user role"""
+    user = request.user
+    
+    if user.user_type == 'student':
+        student = getattr(user, 'student_profile', None)
+        if not student:
+            return Response({'error': 'Student profile not found'}, status=status.HTTP_404_NOT_FOUND)
+        
+        return Response({
+            'role': 'student',
+            'total_aicte_points': student.total_aicte_points,
+            'events_registered': student.event_registrations.count(),
+            'certificates_earned': Certificate.objects.filter(student=student).count(),
+            'pending_approvals': AICTEPointTransaction.objects.filter(
+                student=student,
+                status='PENDING'
+            ).count(),
+        })
+    
+    elif user.user_type == 'mentor':
+        mentor = getattr(user, 'mentor_profile', None)
+        if not mentor:
+            return Response({'error': 'Mentor profile not found'}, status=status.HTTP_404_NOT_FOUND)
+        
+        mentees = Student.objects.filter(mentor=mentor)
+        pending_approvals = AICTEPointTransaction.objects.filter(
+            student__in=mentees,
+            status='PENDING'
+        ).count()
+        
+        return Response({
+            'role': 'mentor',
+            'total_mentees': mentees.count(),
+            'pending_approvals': pending_approvals,
+            'profile_completed': mentor.profile_completed,
+        })
+    
+    elif user.user_type == 'admin':
+        return Response({
+            'role': 'admin',
+            'total_users': User.objects.count(),
+            'total_students': Student.objects.count(),
+            'total_mentors': Mentor.objects.count(),
+            'total_clubs': Club.objects.count(),
+            'total_events': Event.objects.count(),
+        })
+    
+    return Response({'error': 'Invalid user type'}, status=status.HTTP_400_BAD_REQUEST)

@@ -1,0 +1,6 @@
+VITE_AWS_REGION=us-east-1
+VITE_AWS_USER_POOL_ID=us-east-1_Mjgf1Jqju
+VITE_AWS_USER_POOL_CLIENT_ID=3ig6g1tvqo9os3tfmfmkbojii
+VITE_AWS_IDENTITY_POOL_ID=us-east-1:6d00f2f3-2db2-44db-9b00-be564b9ea6ef
+VITE_AWS_API_URL=https://d3bup16vs9.execute-api.us-east-1.amazonaws.com/prod
+VITE_AWS_FILES_BUCKET_NAME=securefile-vault-930664225363-us-east-1

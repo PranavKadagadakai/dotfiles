@@ -1,0 +1,1 @@
+{"ref":"e09f61b3-10a7-4602-b3a6-ce6e47571e24","syncData":{"version":1,"machineId":"c8277450-a7ef-4ad6-93ef-5d9da0a38ceb","content":"{\"mcp\":\"{\\\"servers\\\":{\\\"MCP_DOCKER\\\":{\\\"command\\\":\\\"docker\\\",\\\"args\\\":[\\\"mcp\\\",\\\"gateway\\\",\\\"run\\\"],\\\"type\\\":\\\"stdio\\\"}}}\"}"}}

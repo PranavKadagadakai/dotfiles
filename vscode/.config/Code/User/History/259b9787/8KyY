@@ -1,0 +1,5 @@
+MONGODB_URI=mongodb+srv://book_review_platform:mqiTCWjmQxe6WL1m@cluster0.ztngzad.mongodb.net/bookreviews?retryWrites=true&w=majority&appName=Cluster0    # mongodb://127.0.0.1:27017/book_review_db
+JWT_SECRET=your-super-secret-jwt-key
+PORT=5000
+NODE_ENV=development
+FRONTEND_URL=http://localhost:5173

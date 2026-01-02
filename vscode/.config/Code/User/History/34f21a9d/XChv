@@ -1,0 +1,6 @@
+VITE_APP_AWS_REGION=us-east-1
+VITE_APP_AWS_USER_POOL_ID=us-east-1_lojWVqTFh
+VITE_APP_AWS_USER_POOL_WEB_CLIENT_ID=XXXXXXXXXXXXXXXXXXXXXXXXXX
+VITE_APP_AWS_IDENTITY_POOL_ID=us-east-1:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+VITE_APP_AWS_API_URL=https://q4cjbw30a5.execute-api.us-east-1.amazonaws.com/prod/
+VITE_APP_AWS_FILES_BUCKET_NAME=securefile-vault-930664225363-us-east-1

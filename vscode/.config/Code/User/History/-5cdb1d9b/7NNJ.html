@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 20px; border-radius: 5px 5px 0 0; text-align: center; }
+        .content { background: #f9f9f9; padding: 20px; border: 1px solid #ddd; }
+        .footer { background: #333; color: white; padding: 10px; text-align: center; font-size: 12px; }
+        .otp-box { background: #fff3cd; padding: 20px; border: 2px solid #ffc107; border-radius: 5px; text-align: center; margin: 20px 0; }
+        .otp-code { font-family: monospace; font-size: 32px; font-weight: bold; color: #f5576c; letter-spacing: 5px; }
+        .warning { background: #f8d7da; padding: 10px; border-left: 4px solid #f5576c; margin: 15px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CertifyTrack</h1>
+            <p>Password Reset Request</p>
+        </div>
+        
+        <div class="content">
+            <p>Hi {{ user_name }},</p>
+            
+            <p>We received a request to reset your password. Use the code below to reset your password:</p>
+            
+            <div class="otp-box">
+                <p><strong>Your Reset Code:</strong></p>
+                <p class="otp-code">{{ otp }}</p>
+                <p><small>Valid for {{ otp_minutes }} minutes</small></p>
+            </div>
+            
+            <p><strong>How to reset your password:</strong></p>
+            <ol>
+                <li>Go to {{ frontend_url }}/forgot-password</li>
+                <li>Enter this code: <code>{{ otp }}</code></li>
+                <li>Create your new password</li>
+                <li>Confirm and save</li>
+            </ol>
+            
+            <div class="warning">
+                <p><strong>⚠️ Security Warning:</strong></p>
+                <p>If you didn't request a password reset, please ignore this email. Your account is still secure.</p>
+            </div>
+            
+            <p><strong>This code will expire in {{ otp_minutes }} minutes.</strong></p>
+            
+            <p>Never share this code with anyone. CertifyTrack staff will never ask for it.</p>
+            
+            <p>Best regards,<br>The CertifyTrack Team</p>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 CertifyTrack. All rights reserved.</p>
+            <p>Contact: support@certifytrack.com</p>
+        </div>
+    </div>
+</body>
+</html>

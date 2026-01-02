@@ -5,3 +5,6 @@ libreoffice/.config/libreoffice/4/user/backup
 **/*.log
 btop/.config/btop/btop.log
 btop/.config/btop/btop.log.1
+# VS Code junk
+**/workspaceStorage/
+**/globalStorage/

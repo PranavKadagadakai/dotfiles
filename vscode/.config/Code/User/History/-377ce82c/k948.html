@@ -1,0 +1,135 @@
+{% extends 'base.html' %} {% block content %}
+<div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-12">
+  <div class="max-w-5xl mx-auto px-6 space-y-16">
+    <!-- Hero Section -->
+    <div
+      class="bg-white dark:bg-gray-800 shadow-lg rounded-2xl text-center py-16 px-10"
+    >
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+        Effortless Certificate Management
+      </h1>
+      <p class="text-gray-600 dark:text-gray-300 mb-8">
+        CertifyTrack simplifies event-based certification, helping institutions
+        and organizations manage and verify certificates seamlessly.
+      </p>
+      <div class="flex justify-center gap-4">
+        <a
+          href="{% url 'signup' %}"
+          class="px-6 py-3 rounded-lg text-white bg-blue-600 hover:bg-blue-700 font-medium"
+        >
+          Get Started
+        </a>
+        <a
+          href="{% url 'login' %}"
+          class="px-6 py-3 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 font-medium"
+        >
+          Log In
+        </a>
+      </div>
+    </div>
+
+    <!-- Why Choose Section -->
+    <section class="text-center space-y-4">
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">
+        Why Choose CertifyTrack?
+      </h2>
+      <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+        Designed for educational institutions, clubs, and event organizers,
+        CertifyTrack ensures a seamless certification experience.
+      </p>
+    </section>
+
+    <!-- Features Section -->
+    <section class="space-y-12">
+      <div class="bg-gray-100 dark:bg-gray-800 p-10 rounded-xl shadow-md">
+        <h3
+          class="text-xl font-semibold text-gray-900 dark:text-white mb-2 flex items-center"
+        >
+          <i class="fas fa-certificate mr-3"></i> Automated Certificate
+          Generation
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400">
+          Generate AICTE-compliant certificates instantly upon event completion.
+        </p>
+      </div>
+
+      <div class="bg-gray-100 dark:bg-gray-800 p-10 rounded-xl shadow-md">
+        <h3
+          class="text-xl font-semibold text-gray-900 dark:text-white mb-2 flex items-center"
+        >
+          <i class="fas fa-check-circle mr-3"></i> Easy Verification
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400">
+          Mentors and institutions can verify certificates with a single click.
+        </p>
+      </div>
+
+      <div class="bg-gray-100 dark:bg-gray-800 p-10 rounded-xl shadow-md">
+        <h3
+          class="text-xl font-semibold text-gray-900 dark:text-white mb-2 flex items-center"
+        >
+          <i class="fas fa-lock mr-3"></i> Secure Storage
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400">
+          All certificates are securely stored and accessible anytime.
+        </p>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="text-center space-y-6">
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">
+        What Our Users Say
+      </h2>
+      <p class="text-gray-600 dark:text-gray-400">
+        Hear from students, mentors, and institutions using CertifyTrack.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-6">
+          <p class="text-gray-700 dark:text-gray-300 mb-4">
+            "CertifyTrack has made event certification effortless! I can now
+            download my certificates instantly!"
+          </p>
+          <p class="text-blue-600 dark:text-blue-400 font-medium">
+            — Rahul Sharma, Student
+          </p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-6">
+          <p class="text-gray-700 dark:text-gray-300 mb-4">
+            "Managing events has never been easier. Certificate generation is
+            smooth and quick!"
+          </p>
+          <p class="text-blue-600 dark:text-blue-400 font-medium">
+            — Dr. Priya Menon, Club Coordinator
+          </p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-6">
+          <p class="text-gray-700 dark:text-gray-300 mb-4">
+            "The verification system ensures authenticity and trust in every
+            certificate we issue."
+          </p>
+          <p class="text-blue-600 dark:text-blue-400 font-medium">
+            — Kiran Kumar, Mentor
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <div class="bg-blue-600 text-center text-white py-16 rounded-xl shadow-lg">
+      <h2 class="text-2xl font-bold mb-4">
+        Start Managing Your Certificates Today!
+      </h2>
+      <p class="mb-6">
+        Sign up now and experience the future of certificate management.
+      </p>
+      <a
+        href="{% url 'signup' %}"
+        class="px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-200"
+      >
+        Sign Up Now
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}
