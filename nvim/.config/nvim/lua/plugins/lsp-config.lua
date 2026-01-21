@@ -15,7 +15,6 @@ return {
         "jsonls",
         "bashls",
         "yamlls",
-        "solargraph",
         "html",
         "lua_ls",
       },
@@ -34,7 +33,6 @@ return {
         "jsonls",
         "bashls",
         "yamlls",
-        "solargraph",
         "html",
         "lua_ls",
       }

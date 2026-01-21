@@ -72,9 +72,21 @@ ZSH_CUSTOM="$HOME/.custom-zsh/custom"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git history)
 
 source $ZSH/oh-my-zsh.sh
+
+# ---- Arch-installed zsh plugins ----
+
+# Autosuggestions
+if [[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+# Syntax highlighting (MUST be last)
+if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 # User configuration
 
@@ -108,15 +120,17 @@ $ZSH_CUSTOM/aliases.zsh
 ## USER ADDED CUSTOM COMMANDS
 
 # Homebrew config
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if command -v brew >/dev/null 2>&1; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 # config oh-my-posh
 export PATH=$PATH:$HOME/.local/bin
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.json)"
 
 # Set up fzf key bindings and fuzzy completion
-source "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh"
-source "$(brew --prefix)/opt/fzf/shell/completion.zsh"
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 #source /usr/share/doc/fzf/examples/key-bindings.zsh
 #source /usr/share/doc/fzf/examples/completion.zsh
 
@@ -132,6 +146,9 @@ EOF
 export FZF_DEFAULT_OPTS="$FZF_THEME"
 export COLORTERM=truecolor
 
+# Neovim global install path
+export PATH="$HOME/.npm-global/bin:$PATH"
+
 # Tmuxifier config
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 eval "$(tmuxifier init -)"
@@ -145,7 +162,7 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 [[ $- != *i* ]] && return
 set -o vi
 
-. "$HOME/.cargo/env"
+[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 alias vim='nvim'
 HISTSIZE=5000
 HISTFILESIZE=10000
@@ -156,9 +173,17 @@ export MANPAGER='nvim +Man!'
 # export MATLAB_FORCE_SOFTWARE_OPENGL=1
 
 # Node Version Manager setup
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+
+nvm() {
+  unset -f nvm
+  if [ -s /usr/share/nvm/init-nvm.sh ]; then
+    source /usr/share/nvm/init-nvm.sh
+  elif [ -s "$NVM_DIR/nvm.sh" ]; then
+    source "$NVM_DIR/nvm.sh"
+  fi
+  nvm "$@"
+}
 
 # Zoxide init
 eval "$(zoxide init zsh)"
@@ -166,11 +191,6 @@ eval "$(zoxide init zsh)"
 # Set Locale for btop
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8
-
-# pyenv configs
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 # XDG Runtime Dir config
 export XDG_RUNTIME_DIR=/run/user/$(id -u)

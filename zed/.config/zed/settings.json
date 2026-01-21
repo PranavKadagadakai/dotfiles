@@ -14,8 +14,8 @@
   "agent": {
     "default_profile": "ask",
     "default_model": {
-      "provider": "openrouter",
-      "model": "qwen/qwen3-coder:free",
+      "provider": "ollama",
+      "model": "codegeex4-9b:latest",
     },
     "inline_assistant_model": {
       "provider": "openrouter",
