@@ -6,6 +6,7 @@ alias ...="z ../../"
 alias ....="z ../../../"
 
 # More ls aliases
+alias ls="eza"
 alias la="eza -la -a"
 alias ll="eza -l"
 alias lT="eza -lT" # long tree list
@@ -27,7 +28,6 @@ alias vi="vim"
 alias src="source"
 alias srczsh="source ~/.zshrc"
 alias srcpyvenv="source ./.venv/bin/activate"
-alias bat="batcat"
 
 # Backup installed packages and apps
 alias backup-packages="bash ~/.scripts/backup-packages.sh"
@@ -96,3 +96,38 @@ fcl() {
   clear && printf '\e[3J'
 }
 
+# ==========================================
+# Local AI Agent Server Configuration
+# ==========================================
+
+# Direct shortcut to launch the Qwen 7B Agent server
+alias run-agent-server="llama-server -m ~/ai-models/qwen2.5-coder-7b-instruct-q4_k_m.gguf -ngl 99 -c 32768 -np 3 --flash-attn on --jinja --port 8000"
+
+# Flexible function to launch any local GGUF model as an Agent endpoint
+# Usage: serve-agent ~/path/to/model.gguf [optional_port]
+serve-agent() {
+    local model_path=$1
+    local port=${2:-8000} # Defaults to port 8000 if not provided
+
+    if [ -z "$model_path" ]; then
+        echo "❌ Error: Please specify a path to a GGUF model."
+        echo "Usage: serve-agent ~/ai-models/model.gguf"
+        return 1
+    fi
+
+    echo "🚀 Starting OpenAI-compatible Agent Server..."
+    echo "📦 Model: $model_path"
+    echo "🌐 Port: $port"
+    echo "🧠 Context Window: 32,768 tokens (Agent Optimized)"
+    echo "⚡ Hardware: Offloading layers to RTX 5060 + Flash Attention"
+    print -P "%F{yellow}--------------------------------------------------%f"
+
+    llama-server \
+        -m "$model_path" \
+        --port "$port" \
+        -ngl 99 \
+        -c 32768 \
+        -np 3 \
+        --flash-attn on \
+        --jinja
+}

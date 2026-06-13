@@ -116,7 +116,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
 ## USER ADDED CUSTOM COMMANDS
 
 # Installed Packages' Backup
@@ -187,7 +186,6 @@ function extract {
         esac
     done
 }
-
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 . "$HOME/.cargo/env"

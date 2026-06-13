@@ -1,4 +1,74 @@
 {
+  "language_models": {
+    "openai_compatible": {
+      "Nvidia": {
+        "api_url": "https://integrate.api.nvidia.com/v1",
+        "available_models": [
+          {
+            "name": "nvidia/nemotron-3-ultra-550b-a55b",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false
+            }
+          }
+        ]
+      }
+    },
+    "ollama": {
+      "api_url": "http://localhost:8000"
+    }
+  },
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        }
+      },
+      "enable_lsp_tasks": true
+    }
+  },
+  "cli_default_open_behavior": "existing_window",
+  "agent_servers": {
+    "opencode": {
+      "default_config_options": {
+        "model": "local-llama/gemma-4-E4B-it-Q4_K_M.gguf"
+      },
+      "type": "registry"
+    },
+    "codex-acp": {
+      "type": "registry"
+    },
+    "pi-acp": {
+      "type": "registry"
+    }
+  },
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "languages": { "Java": { "show_edit_predictions": true } },
   "minimap": { "show": "always" },
   "vim_mode": false,
@@ -10,12 +80,13 @@
       "args": ["mcp", "gateway", "run"],
     },
   },
-  "edit_predictions": { "mode": "eager" },
+  "edit_predictions": { "mode": "subtle" },
   "agent": {
+    "dock": "right",
     "default_profile": "ask",
     "default_model": {
-      "provider": "ollama",
-      "model": "codegeex4-9b:latest",
+      "provider": "Nvidia",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
     },
     "inline_assistant_model": {
       "provider": "openrouter",

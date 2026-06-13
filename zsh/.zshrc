@@ -197,16 +197,3 @@ export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
 # Mason bin path for LSP for nvim
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
-
-
-# pnpm
-export PNPM_HOME="/home/lazypanda69/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# opencode
-export PATH=/home/lazypanda69/.opencode/bin:$PATH
-export LIBVIRT_DEFAULT_URI='qemu:///system'
